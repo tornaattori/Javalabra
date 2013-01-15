@@ -1,5 +1,5 @@
 
-package muistipeli;
+package muistipeli.Kortit;
 
 public class Kortti {
 

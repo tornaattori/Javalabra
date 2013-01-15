@@ -1,10 +1,12 @@
+package muistipeli.kortit;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import muistipeli.Kortti;
-import muistipeli.Tila;
+import muistipeli.Kortit.Kortti;
+import muistipeli.Kortit.Tila;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
