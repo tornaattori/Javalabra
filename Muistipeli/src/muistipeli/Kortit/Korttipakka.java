@@ -20,6 +20,15 @@ public class Korttipakka {
         return kortit.get(indeksi);
     }
     
+    public Kortti getKortti(Kortti kortti) {
+        for(int i = 0; i < this.koko(); i++) {
+            if(kortti.equals(getKortti(i))) {
+                return kortti;
+            }
+        }
+        return null;
+    }
+    
     public int koko() {
         return kortit.size();
     }

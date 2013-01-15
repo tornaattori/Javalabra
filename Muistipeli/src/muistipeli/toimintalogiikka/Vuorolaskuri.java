@@ -10,7 +10,7 @@ public class Vuorolaskuri {
     }
     
     public void kaytaVuoro() {
-        vuorot -= 1;
+        vuorot = vuorot - 1;
     }
     
     public void uusiVuoro() {
@@ -19,6 +19,6 @@ public class Vuorolaskuri {
     
     public int getVuorot() {
         return vuorot;
-    }
-    
+    }    
+
 }
