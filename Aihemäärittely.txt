@@ -1,1 +1,16 @@
-AihemäärittelyAihe: MuistipeliToteutetaan perinteinen muistipeli, jossa käyttäjä saa eteensä väärin päin olevia kortteja. Kortteja voi kääntää kaksi yhden vuoron aikana. Uuden vuoron alkaessa kortit piilotetaan jälleen. Kun käyttäjä löytää parin, kortit poistetaan pelilaudalta. Kun kaikki kortit on löydetty, peli loppuu.Pelissä tulee olemaan kolme vaihtoehtoa korttien määrälle. Tuloksista pidetään kirjaa ja 5 parasta tulosta pääsee TOP 5 -listalle. Mitä nopeammin käyttäjä löytää kaikki parit, sitä parempi tulos.Käyttäjät: PelaajiaKäyttäjien toiminnot: Ei eriytettyjä toimintoja. Kaikki voivat pelata peliä.
+Aihem√§√§rittely
+
+Aihe: Muistipeli
+Toteutetaan perinteinen muistipeli, jossa k√§ytt√§j√§ saa eteens√§ v√§√§rin p√§in olevia 
+kortteja. Kortteja voi k√§√§nt√§√§ kaksi yhden vuoron aikana. Uuden vuoron alkaessa 
+kortit piilotetaan j√§lleen. Kun k√§ytt√§j√§ l√∂yt√§√§ parin, kortit poistetaan pelilaudalta. 
+Kun kaikki kortit on l√∂ydetty, peli loppuu.
+
+Peliss√§ tulee olemaan kolme vaihtoehtoa korttien m√§√§r√§lle. Tuloksista pidet√§√§n 
+kirjaa ja 5 parasta tulosta p√§√§see TOP 5 -listalle. Mit√§ nopeammin k√§ytt√§j√§ l√∂yt√§√§ 
+kaikki parit, sit√§ parempi tulos.
+
+K√§ytt√§j√§t: Pelaajia
+
+K√§ytt√§jien toiminnot: Ei eriytettyj√§ toimintoja. Kaikki voivat pelata peli√§.
+
