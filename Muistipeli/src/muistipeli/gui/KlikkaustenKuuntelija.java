@@ -4,16 +4,12 @@ package muistipeli.gui;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import muistipeli.Kortit.Kortti;
-import muistipeli.toimintalogiikka.Peli;
 
 public class KlikkaustenKuuntelija implements MouseListener{
-
-    private Kortti kortti;
-    private Peli peli;
     
+    private Kortti kortti;
     public KlikkaustenKuuntelija(Kortti kortti) {
         this.kortti = kortti;
-        peli = new Peli();
     }
 
     @Override
@@ -23,8 +19,7 @@ public class KlikkaustenKuuntelija implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent me) {
-        peli.valitseKortti(kortti);
-        System.out.println("käänsit kortin: " + kortti.getId());
+        kortti.kaanna();
     }
 
     @Override

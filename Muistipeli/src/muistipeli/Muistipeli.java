@@ -2,14 +2,15 @@
 package muistipeli;
 
 import muistipeli.gui.Kayttoliittyma;
+import muistipeli.toimintalogiikka.Peli;
 
 
 public class Muistipeli {
 
     public static void main(String[] args) {
         
-        Kayttoliittyma kali = new Kayttoliittyma();
-        kali.run();
+        Peli peli = new Peli();
+        peli.kaynnista();
         
     }
 

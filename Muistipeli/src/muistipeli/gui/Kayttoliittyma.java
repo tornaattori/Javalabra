@@ -12,9 +12,11 @@ public class Kayttoliittyma implements Runnable{
 
     private Korttipakka korttipakka;
     private JFrame frame;
+
     
     public Kayttoliittyma() {
         korttipakka = new Korttipakka();
+        
     }
     
     @Override
@@ -29,16 +31,20 @@ public class Kayttoliittyma implements Runnable{
         frame.setVisible(true);
     }
     
-    public void luoKomponentit(Container container) {
+    private void luoKomponentit(Container container) {
         
         GridLayout leiska = new GridLayout(1, 2);
         container.setLayout(leiska);
         
-        for(int i = 0; i < korttipakka.koko(); i++) {
-            KlikkaustenKuuntelija kl = new KlikkaustenKuuntelija(korttipakka.getKortti(i));
-            korttipakka.getKortti(i).addMouseListener(kl);
+        for(int i = 0; i < 4; i++) {
             container.add(korttipakka.getKortti(i));
+            KlikkaustenKuuntelija kk = new KlikkaustenKuuntelija(korttipakka.getKortti(i));
+            korttipakka.getKortti(i).addMouseListener(kk);
         }
-    }
+             
+            
+        
+        }
+    
 
 }
