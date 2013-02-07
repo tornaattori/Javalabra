@@ -37,6 +37,25 @@ public class Kortti extends JButton{
     public int getId() {
         return id;
     }
+
     
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kortti other = (Kortti) obj;
+        return true;
+    }
     
 }
