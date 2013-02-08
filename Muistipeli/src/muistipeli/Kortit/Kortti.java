@@ -16,8 +16,10 @@ public class Kortti extends JButton{
     private Tila tila;
     
     /**
-     *
+     *Kortin konstruktori ottaa parametrikseen id-numeron.
+     * Samalla asettaa tilaksi "KIINNI".
      * @param id
+     * @see Tila
      */
     public Kortti(int id) {
         super("KIINNI");
@@ -40,10 +42,10 @@ public class Kortti extends JButton{
             this.setText(Integer.toString(id));
         }
     }
+    
     /**
      * Asettaa kortin tilan Löydetyksi. Kortti piilotetaan pelaajalta.
-     */
-    
+     */    
     public void piilotaLoydetty() {
         this.setText("PIILOSSA!!");
         tila = Tila.PIILOSSA;
@@ -52,8 +54,7 @@ public class Kortti extends JButton{
     /**
      * Palauttaa kortin sen hetkisen Tilan.
      * @return tila
-     */
-    
+     */  
     public Tila getTila() {
         return tila;
     }
@@ -62,7 +63,6 @@ public class Kortti extends JButton{
      * Palauttaa kortin yksilöivän id:n.
      * @return id
      */
-    
     public int getId() {
         return id;
     }
