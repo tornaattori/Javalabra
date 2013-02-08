@@ -1,4 +1,8 @@
-    
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package muistipeli.Kortit;
 
 import java.util.ArrayList;
@@ -6,31 +10,36 @@ import java.util.List;
 
 public class Korttipakka {
 
-    private List<Kortti> kortit;
+    private List<Kortti> pakka;
     
     public Korttipakka() {
-        kortit = new ArrayList<Kortti>();
+        pakka = new ArrayList();
+        laitaKortitPakkaan();
         
-        for(int i = 0; i < 4; i++) {
-            kortit.add(new Kortti(i));
-        }       
     }
+    
+    private void laitaKortitPakkaan() {
+        int i = 0;
+        while(i < 20) {
+            if(i % 2 != 0) {
+                pakka.add(new Kortti(i - 1));
+            }
+            else {
+                pakka.add(new Kortti(i));
+            }
+            i++;
+        }
+        
+    }
+    
     
     public Kortti getKortti(int indeksi) {
-        return kortit.get(indeksi);
-    }
-    
-    public Kortti getKortti(Kortti kortti) {
-        for(int i = 0; i < this.koko(); i++) {
-            if(kortti.equals(getKortti(i))) {
-                return kortti;
-            }
-        }
-        return null;
+        return pakka.get(indeksi);
     }
     
     public int koko() {
-        return kortit.size();
+        return pakka.size();
     }
+    
     
 }

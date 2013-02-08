@@ -1,30 +1,29 @@
 
-
 package muistipeli.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import muistipeli.Kortit.Kortti;
 
 public class NapinKuuntelija implements ActionListener{
 
     private Kortti kortti;
-    private Object lukko;
+    private Object lukitse;
     private boolean odottaa;
     
+    
     public NapinKuuntelija() {
-        lukko = new Object();
+        lukitse = new Object();
     }
-    
-    
+       
     @Override
-    public void actionPerformed(ActionEvent event) {
-        kortti = (Kortti)event.getSource();
+    public void actionPerformed(ActionEvent ae) {
+        
+        kortti = (Kortti)ae.getSource();
         odottaa = false;
         
-        synchronized(lukko) {
-            lukko.notifyAll();
+        synchronized(lukitse) {
+            lukitse.notifyAll();
         }
     }
     
@@ -32,16 +31,16 @@ public class NapinKuuntelija implements ActionListener{
         odottaa = true;
         
         try {
-            synchronized(lukko) {
+            synchronized(lukitse) {
                 while(odottaa == true) {
-                    lukko.wait();
+                    lukitse.wait();
+                    
                 }
             }
         }
-        catch(InterruptedException e) {
-            
-        }
         
+        catch (InterruptedException e) {            
+        }
         return kortti;
     }
 
