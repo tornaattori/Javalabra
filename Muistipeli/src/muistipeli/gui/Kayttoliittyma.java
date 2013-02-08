@@ -1,13 +1,11 @@
 package muistipeli.gui;
 
-
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import muistipeli.Kortit.Korttipakka;
-
 
 public class Kayttoliittyma implements Runnable {
 
@@ -16,7 +14,6 @@ public class Kayttoliittyma implements Runnable {
     
     public Kayttoliittyma(Korttipakka pakka) {
         this.pakka = pakka;
-        
     }
     
     @Override
@@ -24,7 +21,6 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Muistipeli");
         frame.setPreferredSize(new Dimension(800, 300));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);      
-
         
         luoKomponentit(frame.getContentPane());
         
@@ -38,15 +34,7 @@ public class Kayttoliittyma implements Runnable {
         container.setLayout(leiska);
         
         for(int i = 0; i < pakka.koko(); i++) {
-            container.add(pakka.getKortti(i));
-            
-            
+            container.add(pakka.getKortti(i));                    
         }
-             
-            
-        
-        }
-     
-   
-
+    }
 }

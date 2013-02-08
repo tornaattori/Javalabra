@@ -48,7 +48,6 @@ public class Peli {
     }
 
     private void valitseKortit() {
-
         Kortti valittuKortti;
 
         valittuKortti = kuuntelija.odotaNappia();

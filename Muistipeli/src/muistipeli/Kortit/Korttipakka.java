@@ -6,6 +6,7 @@
 package muistipeli.Kortit;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Korttipakka {
@@ -15,7 +16,7 @@ public class Korttipakka {
     public Korttipakka() {
         pakka = new ArrayList();
         laitaKortitPakkaan();
-        
+        Collections.shuffle(pakka);        
     }
     
     private void laitaKortitPakkaan() {
@@ -28,10 +29,8 @@ public class Korttipakka {
                 pakka.add(new Kortti(i));
             }
             i++;
-        }
-        
+        }        
     }
-    
     
     public Kortti getKortti(int indeksi) {
         return pakka.get(indeksi);

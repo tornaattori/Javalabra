@@ -8,7 +8,7 @@ import muistipeli.Kortit.Kortti;
 public class NapinKuuntelija implements ActionListener{
 
     private Kortti kortti;
-    private Object lukitse;
+    private final Object lukitse;
     private boolean odottaa;
     
     
@@ -34,13 +34,13 @@ public class NapinKuuntelija implements ActionListener{
             synchronized(lukitse) {
                 while(odottaa == true) {
                     lukitse.wait();
-                    
                 }
             }
         }
         
         catch (InterruptedException e) {            
         }
+        
         return kortti;
     }
 

@@ -6,12 +6,8 @@ package muistipeli.kortit;
  */
 
 import muistipeli.Kortit.Korttipakka;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -34,7 +30,7 @@ public class KorttipakkaTest {
     @Test
     public void konstruktorinTestaus() {
         Korttipakka pakka = new Korttipakka();
-        assertTrue(pakka.koko() == 4);
+        assertTrue(pakka.koko() == 20);
     }
     
     /*
@@ -46,6 +42,6 @@ public class KorttipakkaTest {
     }
     
     public void indeksillaHakeminen2() {
-        assertTrue(testipakka.getKortti(3).getId() == 3);
-    }    
+        assertTrue(testipakka.getKortti(12).getId() == 3);
+    }
 }
