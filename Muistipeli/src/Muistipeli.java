@@ -7,6 +7,7 @@ public class Muistipeli {
        
         Peli peli = new Peli();
         peli.pelaa();
+        
     }
 
 }

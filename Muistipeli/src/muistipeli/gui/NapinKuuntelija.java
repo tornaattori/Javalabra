@@ -5,17 +5,42 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import muistipeli.Kortit.Kortti;
 
+/**
+ * NapinKuuntelija-luokka kuuntelee käyttäjän antamia syötteitä.
+ * @author kinkki
+ */
 public class NapinKuuntelija implements ActionListener{
 
+    /**
+     * Luokkamuuttuja kortille annetaan arvoksi napsautettu kortti.
+     */
     private Kortti kortti;
+    /**
+     * lukitse-objektia käytetään napsautetun napin(kortin)
+     * synkronoimiseen.
+     */
     private final Object lukitse;
+    /**
+     * Kertoo odotetaanko toimintoa vai ei.
+     */
     private boolean odottaa;
     
-    
+    /**
+     * Konstruktori alustaa lukitse-objektin.
+     */
     public NapinKuuntelija() {
         lukitse = new Object();
     }
        
+    /**
+     * Metodi kuuntelee mitä nappia painetaan. Se asettaa
+     * kortti-luokkamuuttujalle napsautetun napin arvon. Odottaa-booleanille
+     * annetaan arvo "false", kun nappia on painettu.
+     * <p>
+     * 
+     * 
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         
@@ -26,6 +51,13 @@ public class NapinKuuntelija implements ActionListener{
             lukitse.notifyAll();
         }
     }
+    
+    /**
+     * Pysäyttää ohjelman, ja odottaa kunnes nappia painetaan.
+     * <p>
+     * Palauttaa viitteen painettuun nappiin.
+     * @return painettu nappi(kortti)
+     */
     
     public Kortti odotaNappia() {
         odottaa = true;
