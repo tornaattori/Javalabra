@@ -7,9 +7,9 @@ public class Muistipeli {
     public static void main(String[] args) throws InterruptedException {
        
         Peli peli = new Peli();
-        //peli.pelaa();
+        peli.pelaa();
         
-        Hallintapaneeli paneeli = new Hallintapaneeli();
+        //Hallintapaneeli paneeli = new Hallintapaneeli();
         
         
     }

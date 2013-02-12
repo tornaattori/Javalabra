@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author kinkki
  */
-public class NapinKuuntelija {
+public class NapinKuuntelijaTest {
     
-    public NapinKuuntelija() {
+    public NapinKuuntelijaTest() {
     }
     
     @BeforeClass

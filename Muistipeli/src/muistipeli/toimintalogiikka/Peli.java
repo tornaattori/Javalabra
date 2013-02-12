@@ -37,7 +37,7 @@ public class Peli {
 
     /**
      * Peli-luokan konstruktori alustaa luokkamuuttujat. Tämän lisäksi se
-     * lisää pakan korteille NapinKuuntelija
+     * lisää pakan korteille NapinKuuntelija-olion.
      * @author Markku Korhonen
      */
     public Peli() {
@@ -50,6 +50,18 @@ public class Peli {
         }
     }
 
+    /**
+     * Käynnistää pelin ja määrää pelin logiikan. 
+     * <p>
+     * Aluksi käynnistetään graafinen käyttöliittymä. Peli etenee siten,
+     * että valitaan kaksi korttia ja tarkistetaan, että ovatko ne parit.
+     * Löydetyt parit ynnätään int-muuttujaan. Samalla lasketaan
+     * vuorot. Kun löydettyjen parien määrä on sama kuin pakan koko jaettuna
+     * kahdella, ts. kaikki parit on löydetty, peli loppuu.
+     * 
+     * @throws InterruptedException 
+     */
+    
     public void pelaa() throws InterruptedException {
         kali.run();
         int loydetytParit = 0;
@@ -74,6 +86,9 @@ public class Peli {
             }
         }
     }
+    /**
+     * Metodin avulla valitaan kortit ja käännetään ne.
+     */
 
     private void valitseKortit() {
         Kortti valittuKortti;
@@ -92,6 +107,17 @@ public class Peli {
             }
         }
     }
+    /**
+     * Tarkastaa ovatko valitut kortit pari. Metodi myös keskeyttää ohjelman
+     * toiminnan kun kaksi korttia on valittu, jotta käyttäjä ehtii
+     * lukea valitsemansa kortit.
+     * <p>
+     * Mikäli kortit ovat pari, metodi piilottaa ne ja poistaa niistä
+     * kuuntelijan. Muussa tapauksessa kortit käännetään kiinni.
+     * 
+     * @return true, jos kortit ovat parit. Muuten palautetaan false.
+     * @throws InterruptedException 
+     */
     
     private boolean tarkastaPari() throws InterruptedException {
         Thread.sleep(750);

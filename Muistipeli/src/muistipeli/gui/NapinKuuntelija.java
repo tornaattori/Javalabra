@@ -56,7 +56,7 @@ public class NapinKuuntelija implements ActionListener{
      * Pysäyttää ohjelman, ja odottaa kunnes nappia painetaan.
      * <p>
      * Palauttaa viitteen painettuun nappiin.
-     * @return painettu nappi(kortti)
+     * @return painettu nappi(Kortti)
      */
     
     public Kortti odotaNappia() {

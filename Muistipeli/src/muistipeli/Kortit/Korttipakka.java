@@ -21,8 +21,8 @@ public class Korttipakka {
     
     /**
      * Korttipakan konstruktori alustaa pakka-nimisen ArrayList-listan. Tämän
-     * jälkeen se lisää kortit listaan ja sekoittaa korttien 
-     * järjestyksen.
+     * jälkeen se lisää kortit listaan käyttämällä laitaKortitPakkaan-metodia
+     * ja sekoittaa korttien järjestyksen.
      */
     public Korttipakka() {
         pakka = new ArrayList();
@@ -37,6 +37,7 @@ public class Korttipakka {
     
     private void laitaKortitPakkaan() {
         int i = 0;
+        
         while(i < 20) {
             if(i % 2 != 0) {
                 pakka.add(new Kortti(i - 1));

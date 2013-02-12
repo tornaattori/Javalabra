@@ -15,8 +15,7 @@ public class KorttipakkaTest {
     
     /*
      * Testataan ensiksi konstruktoria
-     */
-    
+     */    
     @Test
     public void konstruktorinTestaus() {
         Korttipakka pakka = new Korttipakka();
@@ -28,28 +27,19 @@ public class KorttipakkaTest {
      */
     @Test
     public void konstruktorinTestausKortitSekoittuvat() {
-        boolean samat = false;
+        int samoja = 0;
         Korttipakka pakka = new Korttipakka();
+        
         for(int i = 0; i < testipakka.koko(); i++) {
             if(testipakka.getKortti(i).getId() == pakka.getKortti(i).getId()) {
-                samat = true;
-                break;
+                samoja++;
             }
         }
-        assertTrue(samat == true);
+        assertTrue(samoja < 20);
     }
     
-    /*
-     * Testataan indeksin perusteella hakemista
-     */
-    
-    @Test
-    public void indeksillaHakeminen() {
-        assertTrue(testipakka.getKortti(0).getId() == 0);
-    }
-    
-    @Test
-    public void indeksillaHakeminen2() {
-        assertTrue(testipakka.getKortti(12).getId() == 3);
+    @Test 
+    public void kokoMetodiToimii() {
+        assertTrue(testipakka.koko() == 20);
     }
 }
