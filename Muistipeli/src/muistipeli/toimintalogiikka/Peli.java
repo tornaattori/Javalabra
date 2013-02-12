@@ -5,13 +5,41 @@ import muistipeli.Kortit.Korttipakka;
 import muistipeli.gui.Kayttoliittyma;
 import muistipeli.gui.NapinKuuntelija;
 
+/**
+ * Peli-luokka on Muistipelin tärkein luokka, joka käytännössä yhdistää
+ * kaikki muut luokat ja mahdollistaa ohjelman käynnistämisen.
+ * 
+ * @author kinkki
+ */
+
 public class Peli {
 
+    /**
+     * Pelin käyttöliittymä. Käynnistetään Peli-luokan kautta.
+     * @see Kayttoliittyma
+     */
     private Kayttoliittyma kali;
+    /*
+     * Kortit sisältävä pakka. Annetaan "kali"-oliolle, jotta
+     * Muistipeli käsittelisi samaa pakkaa.
+     * @see Korttipakka
+     */
     private Korttipakka pakka;
+    /*
+     * Kuuntelee nappien tapahtumia.
+     * @see NapinKuuntelija
+     */
     private NapinKuuntelija kuuntelija;
+    /**
+     * Näitä kahta Kortti-oliota tarvitaan pelin logiikan suorittamiseksi.
+     */
     private Kortti kortti1, kortti2;
 
+    /**
+     * Peli-luokan konstruktori alustaa luokkamuuttujat. Tämän lisäksi se
+     * lisää pakan korteille NapinKuuntelija
+     * @author Markku Korhonen
+     */
     public Peli() {
         pakka = new Korttipakka();
         kali = new Kayttoliittyma(pakka);

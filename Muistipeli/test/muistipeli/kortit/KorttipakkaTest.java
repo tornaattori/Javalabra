@@ -1,18 +1,9 @@
 package muistipeli.kortit;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import muistipeli.Kortit.Korttipakka;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-/**
- *
- * @author kinkki
- */
 public class KorttipakkaTest {
     
     private Korttipakka testipakka;
@@ -21,7 +12,6 @@ public class KorttipakkaTest {
         testipakka = new Korttipakka();
         
     }
-    
     
     /*
      * Testataan ensiksi konstruktoria
@@ -34,13 +24,31 @@ public class KorttipakkaTest {
     }
     
     /*
+     * Testataan, että kortit oikeasti sekoittuvat 
+     */
+    @Test
+    public void konstruktorinTestausKortitSekoittuvat() {
+        boolean samat = false;
+        Korttipakka pakka = new Korttipakka();
+        for(int i = 0; i < testipakka.koko(); i++) {
+            if(testipakka.getKortti(i).getId() == pakka.getKortti(i).getId()) {
+                samat = true;
+                break;
+            }
+        }
+        assertTrue(samat == true);
+    }
+    
+    /*
      * Testataan indeksin perusteella hakemista
      */
     
+    @Test
     public void indeksillaHakeminen() {
         assertTrue(testipakka.getKortti(0).getId() == 0);
     }
     
+    @Test
     public void indeksillaHakeminen2() {
         assertTrue(testipakka.getKortti(12).getId() == 3);
     }

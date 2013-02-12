@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package muistipeli.Kortit;
 
@@ -13,7 +9,7 @@ import java.util.List;
  * Luo Kortteja sisältävän Korttipakan. Käskee niin ikään Kortti-luokkaa
  * luomaan kortit.
  * 
- * @author kinkki
+ * @author Markku Korhonen
  */
 
 public class Korttipakka {
@@ -24,8 +20,8 @@ public class Korttipakka {
     private List<Kortti> pakka;
     
     /**
-     * Korttipakan konstruktori luo pakka-nimisen ArrayList-listan. Tämän
-     * jälkeen se lisää kortit listaan ja lopuksi sekoittaa niiden 
+     * Korttipakan konstruktori alustaa pakka-nimisen ArrayList-listan. Tämän
+     * jälkeen se lisää kortit listaan ja sekoittaa korttien 
      * järjestyksen.
      */
     public Korttipakka() {

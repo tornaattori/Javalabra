@@ -1,10 +1,5 @@
 package muistipeli.kortit;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Tila;
 import org.junit.After;
@@ -14,10 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author kinkki
- */
 public class KorttiTest {
     
     private Kortti testikortti;
@@ -77,14 +68,26 @@ public class KorttiTest {
     
     @Test
     public void piilotaKortti() {
+        testikortti.kaanna();
         testikortti.piilotaLoydetty();
         assertTrue(testikortti.getTila() == Tila.PIILOSSA);
     }
     
+    /*
+     * Ensiksi kortti kaannetaan AUKI, jotta se voidaan piilottaa.
+     * Kun se on piilotettu, ei ohjelman tule enää kääntää sitä.
+     */
     @Test
     public void piilotettuKorttiEiKaanny() {
+        testikortti2.kaanna();
         testikortti2.piilotaLoydetty();
         testikortti2.kaanna();
         assertTrue(testikortti2.getTila() == Tila.PIILOSSA);
+    }
+    
+    @Test
+    public void kiinniOlevaaKorttiaEiVoiPiilottaa() {
+        testikortti.piilotaLoydetty();
+        assertTrue(testikortti.getTila() == Tila.KIINNI);
     }
 }
