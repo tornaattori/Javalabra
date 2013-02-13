@@ -18,8 +18,6 @@ import muistipeli.Kortit.Korttipakka;
 
 public class Kayttoliittyma implements Runnable {
 
-    
-    
     private Korttipakka pakka;
     private JFrame frame;
     
@@ -38,6 +36,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setPreferredSize(new Dimension(800, 300));
         
         luoKomponentit(frame.getContentPane());
+        luoValikko();
               
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);      
         frame.pack();
@@ -60,9 +59,7 @@ public class Kayttoliittyma implements Runnable {
         
         for(int i = 0; i < pakka.koko(); i++) {
             container.add(pakka.getKortti(i));                    
-        }
-        
-        luoValikko();
+        }        
     }
     
     private void luoValikko() {

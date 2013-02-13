@@ -22,8 +22,6 @@ public class Peli {
      */
     private Kayttoliittyma kali;
     
-    //private Dialog dialogi;
-    
     /*
      * Kortit sisältävä pakka. Annetaan "kali"-oliolle, jotta
      * Muistipeli käsittelisi samaa pakkaa.
@@ -32,8 +30,7 @@ public class Peli {
     private Korttipakka pakka;
     
     private Pelaaja pelaaja;
-    
-    private ValikonKuuntelija valikonKuuntelija;
+
     /*
      * Kuuntelee nappien tapahtumia.
      * @see NapinKuuntelija
@@ -148,7 +145,7 @@ public class Peli {
     }
     
     public void kaynnistaUudelleen() throws InterruptedException {
-        pelaaja.nollaaPisteet();
+        //pelaaja.nollaaPisteet();
         pakka.nollaaPakka();
         this.pelaa();
     }
