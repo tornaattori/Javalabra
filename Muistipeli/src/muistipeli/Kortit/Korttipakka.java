@@ -50,6 +50,22 @@ public class Korttipakka {
     }
     
     /**
+     * Asettaa kaikkien korttien tilaksi KIINNI ja sekoittaa pakan.
+     * 
+     * @return sekoitettu Korttipakka
+     * 
+     */
+    
+    public Korttipakka nollaaPakka() {
+        for(int i = 0; i < this.koko(); i++) {
+            this.getKortti(i).setTila(Tila.KIINNI);
+        }
+        Collections.shuffle(pakka);
+        return this;
+    }
+    
+    
+    /**
      * Palauttaa halutun kortin parametriksi annetusta indeksistä.
      * @param indeksi
      * @return parametriksi annetusta indeksistä löytyvä kortti.

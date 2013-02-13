@@ -33,6 +33,10 @@ public class Pelaaja {
         this.pisteet = pisteet;
     }
     
+    public void nollaaPisteet() {
+        this.pisteet = 0;
+    }
+    
     public int getPisteet() {
         return pisteet;
     }

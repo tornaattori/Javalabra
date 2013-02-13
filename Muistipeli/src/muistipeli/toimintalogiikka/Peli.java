@@ -4,6 +4,8 @@ import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Korttipakka;
 import muistipeli.gui.Kayttoliittyma;
 import muistipeli.gui.NapinKuuntelija;
+import muistipeli.gui.ValikonKuuntelija;
+import muistipeli.pelaaja.Pelaaja;
 
 /**
  * Peli-luokka on Muistipelin tärkein luokka, joka käytännössä yhdistää
@@ -19,17 +21,24 @@ public class Peli {
      * @see Kayttoliittyma
      */
     private Kayttoliittyma kali;
+    
+    //private Dialog dialogi;
+    
     /*
      * Kortit sisältävä pakka. Annetaan "kali"-oliolle, jotta
      * Muistipeli käsittelisi samaa pakkaa.
      * @see Korttipakka
      */
     private Korttipakka pakka;
+    
+    private Pelaaja pelaaja;
+    
+    private ValikonKuuntelija valikonKuuntelija;
     /*
      * Kuuntelee nappien tapahtumia.
      * @see NapinKuuntelija
      */
-    private NapinKuuntelija kuuntelija;
+    private NapinKuuntelija napinKuuntelija;
     /**
      * Näitä kahta Kortti-oliota tarvitaan pelin logiikan suorittamiseksi.
      */
@@ -43,10 +52,10 @@ public class Peli {
     public Peli() {
         pakka = new Korttipakka();
         kali = new Kayttoliittyma(pakka);
-        kuuntelija = new NapinKuuntelija();
-
+        napinKuuntelija = new NapinKuuntelija();
+        
         for (int i = 0; i < pakka.koko(); i++) {
-            pakka.getKortti(i).addActionListener(kuuntelija);
+            pakka.getKortti(i).addActionListener(napinKuuntelija);
         }
     }
 
@@ -62,12 +71,13 @@ public class Peli {
      * @throws InterruptedException 
      */
     
-    public void pelaa() throws InterruptedException {
+    public void pelaa() throws InterruptedException {       
         kali.run();
         int loydetytParit = 0;
         int vuorot = 0;
 
-        while (true) {
+        while (true) {        
+            
             System.out.println(vuorot);
             valitseKortit();
             
@@ -93,12 +103,12 @@ public class Peli {
     private void valitseKortit() {
         Kortti valittuKortti;
 
-        valittuKortti = kuuntelija.odotaNappia();
+        valittuKortti = napinKuuntelija.odotaNappia();
         kortti1 = (Kortti) valittuKortti;
         kortti1.kaanna();
 
         while (true) {
-            valittuKortti = kuuntelija.odotaNappia();
+            valittuKortti = napinKuuntelija.odotaNappia();
             kortti2 = (Kortti) valittuKortti;
             
             if (kortti2 != kortti1) {
@@ -121,11 +131,13 @@ public class Peli {
     
     private boolean tarkastaPari() throws InterruptedException {
         Thread.sleep(750);
+        
+        //new Timer (new ActionListener())
         if(kortti1.getId() == kortti2.getId()) {
             kortti1.piilotaLoydetty();
-            kortti1.removeActionListener(kuuntelija);
+            kortti1.removeActionListener(napinKuuntelija);
             kortti2.piilotaLoydetty();
-            kortti2.removeActionListener(kuuntelija);
+            kortti2.removeActionListener(napinKuuntelija);
             return true;
         }
         else {
@@ -133,5 +145,11 @@ public class Peli {
             kortti2.kaanna();
         }
         return false;
-    }    
+    }
+    
+    public void kaynnistaUudelleen() throws InterruptedException {
+        pelaaja.nollaaPisteet();
+        pakka.nollaaPakka();
+        this.pelaa();
+    }
 }

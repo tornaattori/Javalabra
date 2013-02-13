@@ -69,6 +69,10 @@ public class Kortti extends JButton{
         }
     }
     
+    public void setTila(Tila tila) {
+        this.tila = tila;
+    }
+    
     /**
      * Palauttaa kortin sen hetkisen Tilan.
      * @return tila

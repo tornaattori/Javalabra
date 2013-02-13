@@ -4,6 +4,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 import muistipeli.Kortit.Korttipakka;
 
@@ -33,10 +36,10 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         frame = new JFrame("Muistipeli");
         frame.setPreferredSize(new Dimension(800, 300));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);      
         
         luoKomponentit(frame.getContentPane());
-        
+              
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);      
         frame.pack();
         frame.setVisible(true);
     }
@@ -45,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
      * Metodi luo käyttöliittymään tulevat komponentit. Ensiksi luodaan
      * layout, joka annetaan Container-parametrinä saatavalle container-
      * oliolle. Tämän jälkeen käyttöliittymään lisätään pakan kortit.
-     * @param container 
+     * @param Container 
      * @see Kortti
      * @see Korttipakka
      */
@@ -58,5 +61,25 @@ public class Kayttoliittyma implements Runnable {
         for(int i = 0; i < pakka.koko(); i++) {
             container.add(pakka.getKortti(i));                    
         }
+        
+        luoValikko();
+    }
+    
+    private void luoValikko() {
+        JMenuBar valikko = new JMenuBar();
+        
+        JMenu valikkoPeli = new JMenu("Peli");
+        valikko.add(valikkoPeli);
+               
+        JMenuItem valikkoUusi = new JMenuItem("Uusi peli");
+        valikkoUusi.addActionListener(new ValikonKuuntelija(this));
+        valikkoPeli.add(valikkoUusi);
+        
+        JMenuItem valikkoLopeta = new JMenuItem("Lopeta");
+        valikkoLopeta.addActionListener(new ValikonKuuntelija(this));
+        valikkoPeli.add(valikkoLopeta);
+        
+        frame.setJMenuBar(valikko);
+        
     }
 }
