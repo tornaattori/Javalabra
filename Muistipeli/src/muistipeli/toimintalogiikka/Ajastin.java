@@ -7,14 +7,16 @@ public class Ajastin {
     
     void kaynnista() {
         alkuaika = System.currentTimeMillis();
+        System.out.println(alkuaika);
     }
     
     void pysayta() {
         loppuaika = System.currentTimeMillis();
+        System.out.println(loppuaika);
     }
     
     long getKokonaisaika() {
-        return ((loppuaika - alkuaika));
+        return ((loppuaika - alkuaika) / 1000);
     }
 
 }

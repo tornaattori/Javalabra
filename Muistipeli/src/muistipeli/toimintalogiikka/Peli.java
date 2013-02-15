@@ -35,6 +35,8 @@ public class Peli {
     
     private Ajastin ajastin;
 
+    private Kyselija kyselija;
+    
     private ValikonKuuntelija valikonKuuntelija;
     
     /*
@@ -56,8 +58,12 @@ public class Peli {
      * @see kysyTiedot()
      */
     public Peli() {   
-        kysyTiedot();
+        kyselija = new Kyselija();
+        pelaaja = new Pelaaja(kyselija.kysyNimi());
+        pakka = new Korttipakka(kyselija.kysyKorttienMaara());
+        
         kali = new Kayttoliittyma(pakka, this);
+        ajastin = new Ajastin();
         
         napinKuuntelija = new NapinKuuntelija();
         
@@ -65,8 +71,7 @@ public class Peli {
             pakka.getKortti(i).addActionListener(napinKuuntelija);
         }
         
-        valikonKuuntelija = new ValikonKuuntelija(kali, this);
-        ajastin = new Ajastin();
+        valikonKuuntelija = new ValikonKuuntelija(kali, this);   
     }
     
     /**
@@ -74,13 +79,7 @@ public class Peli {
      * Tämän jälkeen metodi kysyy vielä uudessa ikkunassa halutun
      * koon.
      */
-    
-    private void kysyTiedot() {
-        pelaaja = new Pelaaja(JOptionPane.showInputDialog("Syötä nimesi!"));
-        
-        int koko = Integer.parseInt(JOptionPane.showInputDialog("Kuin monel fläbäl säädetää?"));
-        pakka = new Korttipakka(koko);
-    }
+  
 
     /**
      * Käynnistää pelin ja määrää pelin logiikan. 
@@ -180,9 +179,8 @@ public class Peli {
     
     private boolean peliLoppui(int loydetytParit, int vuorot) {
         if(pakka.koko() / 2 == loydetytParit) {
-            JOptionPane.showMessageDialog(null, this.toString());
-            
             ajastin.pysayta();
+            JOptionPane.showMessageDialog(null, this.toString());
 
             return true;
         }
@@ -191,13 +189,13 @@ public class Peli {
     
     
     public void kaynnistaUudelleen() throws InterruptedException {
-        pakka.nollaaPakka();
-        
+        pakka.nollaaPakka();       
     }
     
     @Override
     public String toString() {
-        return "Rakas " + pelaaja.getNimi() + ", peli on ohi! Sait pisteitä "
-                + (ajastin.getKokonaisaika()/pakka.koko()) * 100;
+        return "Rakas " + pelaaja.getNimi() + ", peli on ohi! Aikaa meni " +
+                ajastin.getKokonaisaika() + " sekuntia.";
+                
     }
 }
