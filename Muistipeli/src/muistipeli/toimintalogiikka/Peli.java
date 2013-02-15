@@ -55,15 +55,17 @@ public class Peli {
         kali = new Kayttoliittyma(pakka, this);
         
         napinKuuntelija = new NapinKuuntelija();
-        valikonKuuntelija = new ValikonKuuntelija(kali, this);
         
         for (int i = 0; i < pakka.koko(); i++) {
             pakka.getKortti(i).addActionListener(napinKuuntelija);
         }
+        
+        valikonKuuntelija = new ValikonKuuntelija(kali, this);    
     }
     
     private void kysyTiedot() {
         pelaaja = new Pelaaja(JOptionPane.showInputDialog("Syötä nimesi!"));
+        
         int koko = Integer.parseInt(JOptionPane.showInputDialog("Kuin monel fläbäl säädetää?"));
         pakka = new Korttipakka(koko);
     }

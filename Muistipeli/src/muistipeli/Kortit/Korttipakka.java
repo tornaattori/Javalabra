@@ -19,13 +19,17 @@ public class Korttipakka {
      */
     private List<Kortti> pakka;
     
+    private int koko;
+    
     /**
      * Korttipakan konstruktori alustaa pakka-nimisen ArrayList-listan. Tämän
      * jälkeen se lisää kortit listaan käyttämällä laitaKortitPakkaan-metodia
      * ja sekoittaa korttien järjestyksen.
      */
     public Korttipakka(int koko) {
-        pakka = new ArrayList(koko);
+        this.koko = koko;
+        
+        pakka = new ArrayList();
         laitaKortitPakkaan();
         Collections.shuffle(pakka);        
     }
@@ -38,7 +42,7 @@ public class Korttipakka {
     private void laitaKortitPakkaan() {
         int i = 0;
         
-        while(i < pakka.size()) {
+        while(i < koko) {
             if(i % 2 != 0) {
                 pakka.add(new Kortti(i - 1));
             }
@@ -76,7 +80,7 @@ public class Korttipakka {
      * @return Korttipakan koko.
      */
     public int koko() {
-        return pakka.size();
+        return koko;
     }
     
     

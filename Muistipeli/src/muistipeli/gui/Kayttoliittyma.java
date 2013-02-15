@@ -12,7 +12,7 @@ import muistipeli.Kortit.Korttipakka;
 import muistipeli.toimintalogiikka.Peli;
 
 /**
- * Kayttoliittyma-luokka luo graafisen käyttöliittymän. Se toteuttaa
+ * Kayttoliittyma-luokka luo graafisen käyttöliittymän, joka toteuttaa
  * Runnable-rajapinnan.
  * @author kinkki
  */
