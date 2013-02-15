@@ -33,8 +33,8 @@ public class Korttipakka {
     /**
      * Lisää kortit pakkaan, eli listaan. Korteille annetaan parillinen
      * id-tunniste, jotta pelissä kaikilla korteilla on pari.
-     */
-    
+     * @see Kortti
+     */   
     private void laitaKortitPakkaan() {
         int i = 0;
         
@@ -54,23 +54,20 @@ public class Korttipakka {
      * 
      * @return sekoitettu Korttipakka
      * 
-     */
-    
+     */   
     public Korttipakka nollaaPakka() {
         for(int i = 0; i < this.koko(); i++) {
             this.getKortti(i).setTila(Tila.KIINNI);
         }
         Collections.shuffle(pakka);
         return this;
-    }
-    
+    } 
     
     /**
      * Palauttaa halutun kortin parametriksi annetusta indeksistä.
      * @param indeksi
      * @return parametriksi annetusta indeksistä löytyvä kortti.
-     */
-    
+     */   
     public Kortti getKortti(int indeksi) {
         return pakka.get(indeksi);
     }
@@ -79,7 +76,6 @@ public class Korttipakka {
      * Palauttaa Korttipakassa olevien korttien määrän.
      * @return Korttipakan koko.
      */
-    
     public int koko() {
         return pakka.size();
     }

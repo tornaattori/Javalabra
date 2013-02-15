@@ -2,6 +2,7 @@
 
 package muistipeli.Kortit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /** 
@@ -17,7 +18,7 @@ import javax.swing.JButton;
 public class Kortti extends JButton{
 
     /**
-     * Luokkamuuttuja id yksilöi korttiparin: pakassa olevilla korteilla
+     * Luokkamuuttuja id yksilöi korttiparin: pakassa olevista korteista
      * kahdella on sama id.
      * @see Korttipakka
      * 
@@ -38,7 +39,9 @@ public class Kortti extends JButton{
         super("KIINNI");
         this.id = id;
         tila = Tila.KIINNI;
+        
     }
+
     
     /**
      * Metodi "kääntää" kortin, eli muuttaa sen Tilan joko AUKI-tilasta
@@ -60,12 +63,11 @@ public class Kortti extends JButton{
      * Asettaa kortin tilan Löydetyksi. Kortti piilotetaan pelaajalta,
      * eikä kyseistä korttia voi enää kääntää. Korttia ei voida piilottaa
      * mikäli se on kiinni.
-     * 
      */    
     public void piilotaLoydetty() {
-        if(this.tila != Tila.KIINNI) {
-            this.setText("PIILOSSA!!");
+        if(this.tila == Tila.AUKI) {
             tila = Tila.PIILOSSA;
+            this.setVisible(false);
         }
     }
     
@@ -73,18 +75,10 @@ public class Kortti extends JButton{
         this.tila = tila;
     }
     
-    /**
-     * Palauttaa kortin sen hetkisen Tilan.
-     * @return tila
-     */  
     public Tila getTila() {
         return tila;
     }
-    
-    /**
-     * Palauttaa kortin yksilöivän id:n.
-     * @return id
-     */
+
     public int getId() {
         return id;
     }

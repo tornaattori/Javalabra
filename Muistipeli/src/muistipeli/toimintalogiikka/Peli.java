@@ -8,7 +8,7 @@ import muistipeli.gui.ValikonKuuntelija;
 import muistipeli.pelaaja.Pelaaja;
 
 /**
- * Peli-luokka on Muistipelin tärkein luokka, joka käytännössä yhdistää
+ * Peli-luokka on Muistipelin keskeisin luokka, joka käytännössä yhdistää
  * kaikki muut luokat ja mahdollistaa ohjelman käynnistämisen.
  * 
  * @author kinkki
@@ -29,8 +29,11 @@ public class Peli {
      */
     private Korttipakka pakka;
     
+    //Pelaaja ei tee vielä mitään.
     private Pelaaja pelaaja;
 
+    private ValikonKuuntelija valikonKuuntelija;
+    
     /*
      * Kuuntelee nappien tapahtumia.
      * @see NapinKuuntelija
@@ -49,7 +52,9 @@ public class Peli {
     public Peli() {
         pakka = new Korttipakka();
         kali = new Kayttoliittyma(pakka);
+        
         napinKuuntelija = new NapinKuuntelija();
+        valikonKuuntelija = new ValikonKuuntelija(kali);
         
         for (int i = 0; i < pakka.koko(); i++) {
             pakka.getKortti(i).addActionListener(napinKuuntelija);
@@ -60,8 +65,8 @@ public class Peli {
      * Käynnistää pelin ja määrää pelin logiikan. 
      * <p>
      * Aluksi käynnistetään graafinen käyttöliittymä. Peli etenee siten,
-     * että valitaan kaksi korttia ja tarkistetaan, että ovatko ne parit.
-     * Löydetyt parit ynnätään int-muuttujaan. Samalla lasketaan
+     * että valitaan kaksi korttia ja tarkistetaan ovatko ne parit.
+     * Löydetyt parit ynnätään int-muuttujaan loydetytParit. Samalla lasketaan
      * vuorot. Kun löydettyjen parien määrä on sama kuin pakan koko jaettuna
      * kahdella, ts. kaikki parit on löydetty, peli loppuu.
      * 
@@ -73,16 +78,14 @@ public class Peli {
         int loydetytParit = 0;
         int vuorot = 0;
 
-        while (true) {        
-            
+        while (true) {               
             System.out.println(vuorot);
             valitseKortit();
             
             if(tarkastaPari()) {
                 loydetytParit++;
                 vuorot++;
-            }
-            
+            }           
             else {
                 vuorot++;
             }
@@ -95,8 +98,9 @@ public class Peli {
     }
     /**
      * Metodin avulla valitaan kortit ja käännetään ne.
+     * @see NapinKuuntelija
+     * @see Kortti
      */
-
     private void valitseKortit() {
         Kortti valittuKortti;
 
@@ -127,9 +131,8 @@ public class Peli {
      */
     
     private boolean tarkastaPari() throws InterruptedException {
-        Thread.sleep(750);
-        
-        //new Timer (new ActionListener())
+        Thread.sleep(750); //keskeyttää ohjelman
+
         if(kortti1.getId() == kortti2.getId()) {
             kortti1.piilotaLoydetty();
             kortti1.removeActionListener(napinKuuntelija);
@@ -137,6 +140,7 @@ public class Peli {
             kortti2.removeActionListener(napinKuuntelija);
             return true;
         }
+        
         else {
             kortti1.kaanna();
             kortti2.kaanna();
@@ -144,8 +148,16 @@ public class Peli {
         return false;
     }
     
+    /**
+     * Käynnistää pelin alusta. Varsinainen ohjelma ei kuitenkaan nollaudu,
+     * vaan Kortit käännetään piiloon ja sekoitetaan ilman, että käyttäjän
+     * tarvitsee syöttää nimeään ja valita vaikeustasoa uudestaan.
+     * <p>
+     * Pelaajan jo ansaitut pisteet eivät rekisteröidy, vaan nollautuvat.
+     * @throws InterruptedException 
+     */
+    
     public void kaynnistaUudelleen() throws InterruptedException {
-        //pelaaja.nollaaPisteet();
         pakka.nollaaPakka();
         this.pelaa();
     }
