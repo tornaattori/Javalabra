@@ -194,8 +194,8 @@ public class Peli {
     
     @Override
     public String toString() {
-        return "Rakas " + pelaaja.getNimi() + ", peli on ohi! Aikaa meni " +
-                ajastin.getKokonaisaika() + " sekuntia.";
+        return "Noni" + pelaaja.getNimi() + " (kiitti nimest), se oli siin! Aikaa meni " +
+                ajastin.getKokonaisaika() + " sekkaa, eli liikaa.";
                 
     }
 }

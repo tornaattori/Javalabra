@@ -37,7 +37,7 @@ public class Kyselija {
            } 
            
            else if(korttienMaara < 8 || korttienMaara > 30) {
-               JOptionPane.showMessageDialog(null, "Mitä vittuu mitä lukui! 8-30");
+               JOptionPane.showMessageDialog(null, "Mitä mitä lukui?! Hiffaatsä: 8-30");
            }
            
            else if(korttienMaara.intValue() == 0) {

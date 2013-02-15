@@ -15,6 +15,11 @@ public class Ajastin {
         System.out.println(loppuaika);
     }
     
+    void nollaa() {
+        alkuaika = 0;
+        loppuaika = 0;
+    }
+    
     long getKokonaisaika() {
         return ((loppuaika - alkuaika) / 1000);
     }
