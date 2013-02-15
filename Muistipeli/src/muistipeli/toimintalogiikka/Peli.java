@@ -32,6 +32,8 @@ public class Peli {
     
     //Pelaaja ei tee vielä mitään.
     private Pelaaja pelaaja;
+    
+    private Ajastin ajastin;
 
     private ValikonKuuntelija valikonKuuntelija;
     
@@ -46,9 +48,12 @@ public class Peli {
     private Kortti kortti1, kortti2;
 
     /**
-     * Peli-luokan konstruktori alustaa luokkamuuttujat. Tämän lisäksi se
-     * lisää pakan korteille NapinKuuntelija-olion.
+     * Peli-luokan konstruktori alustaa luokkamuuttujat. Se myös kutsuu
+     * kysyTiedot()-metodia. Lopuksi se lisää pakan korteille NapinKuuntelijat
+     * ja käyttöliittymälle ValikonKuuntelijan.
+     * 
      * @author Markku Korhonen
+     * @see kysyTiedot()
      */
     public Peli() {   
         kysyTiedot();
@@ -60,8 +65,15 @@ public class Peli {
             pakka.getKortti(i).addActionListener(napinKuuntelija);
         }
         
-        valikonKuuntelija = new ValikonKuuntelija(kali, this);    
+        valikonKuuntelija = new ValikonKuuntelija(kali, this);
+        ajastin = new Ajastin();
     }
+    
+    /**
+     * Metodi lyö ruudulle ikkunan, johon pelaaja syöttää nimensä.
+     * Tämän jälkeen metodi kysyy vielä uudessa ikkunassa halutun
+     * koon.
+     */
     
     private void kysyTiedot() {
         pelaaja = new Pelaaja(JOptionPane.showInputDialog("Syötä nimesi!"));
@@ -86,21 +98,21 @@ public class Peli {
         kali.run();
         int loydetytParit = 0;
         int vuorot = 0;
+        ajastin.kaynnista();
 
         while (true) {               
-            System.out.println(vuorot);
             valitseKortit();
             
             if(tarkastaPari()) {
                 loydetytParit++;
                 vuorot++;
+                pelaaja.lisaaPiste();                
             }           
             else {
                 vuorot++;
             }
             
-            if(pakka.koko() / 2 == loydetytParit) {
-                System.out.println("PELI OHI! Vuoroja käytit: " + vuorot);
+            if(peliLoppui(loydetytParit, vuorot)){
                 break;
             }
         }
@@ -166,8 +178,26 @@ public class Peli {
      * @throws InterruptedException 
      */
     
+    private boolean peliLoppui(int loydetytParit, int vuorot) {
+        if(pakka.koko() / 2 == loydetytParit) {
+            JOptionPane.showMessageDialog(null, this.toString());
+            
+            ajastin.pysayta();
+
+            return true;
+        }
+        return false;
+    }
+    
+    
     public void kaynnistaUudelleen() throws InterruptedException {
         pakka.nollaaPakka();
         
+    }
+    
+    @Override
+    public String toString() {
+        return "Rakas " + pelaaja.getNimi() + ", peli on ohi! Sait pisteitä "
+                + (ajastin.getKokonaisaika()/pakka.koko()) * 100;
     }
 }

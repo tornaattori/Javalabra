@@ -25,20 +25,15 @@ public class Pelaaja {
     }
     
     /**
-     * Pelin loputtua pelaajalle lisätään pisteet.
+     * Pelaajalle lisätään pisteitä löytyneistä korteista.
      * @param pisteet 
      */
-    
-    public void lisaaPisteet(int pisteet) {
-        this.pisteet = pisteet;
+    public void lisaaPiste() {
+        pisteet += 1;
     }
     
     public void nollaaPisteet() {
         this.pisteet = 0;
-    }
-    
-    public int getPisteet() {
-        return pisteet;
     }
     
     public String getNimi() {
