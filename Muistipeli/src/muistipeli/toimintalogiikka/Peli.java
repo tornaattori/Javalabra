@@ -1,5 +1,6 @@
 package muistipeli.toimintalogiikka;
 
+import javax.swing.JOptionPane;
 import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Korttipakka;
 import muistipeli.gui.Kayttoliittyma;
@@ -49,16 +50,22 @@ public class Peli {
      * lisää pakan korteille NapinKuuntelija-olion.
      * @author Markku Korhonen
      */
-    public Peli() {
-        pakka = new Korttipakka();
-        kali = new Kayttoliittyma(pakka);
+    public Peli() {   
+        kysyTiedot();
+        kali = new Kayttoliittyma(pakka, this);
         
         napinKuuntelija = new NapinKuuntelija();
-        valikonKuuntelija = new ValikonKuuntelija(kali);
+        valikonKuuntelija = new ValikonKuuntelija(kali, this);
         
         for (int i = 0; i < pakka.koko(); i++) {
             pakka.getKortti(i).addActionListener(napinKuuntelija);
         }
+    }
+    
+    private void kysyTiedot() {
+        pelaaja = new Pelaaja(JOptionPane.showInputDialog("Syötä nimesi!"));
+        int koko = Integer.parseInt(JOptionPane.showInputDialog("Kuin monel fläbäl säädetää?"));
+        pakka = new Korttipakka(koko);
     }
 
     /**
@@ -159,6 +166,6 @@ public class Peli {
     
     public void kaynnistaUudelleen() throws InterruptedException {
         pakka.nollaaPakka();
-        this.pelaa();
+        
     }
 }

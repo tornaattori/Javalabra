@@ -24,8 +24,8 @@ public class Korttipakka {
      * jälkeen se lisää kortit listaan käyttämällä laitaKortitPakkaan-metodia
      * ja sekoittaa korttien järjestyksen.
      */
-    public Korttipakka() {
-        pakka = new ArrayList();
+    public Korttipakka(int koko) {
+        pakka = new ArrayList(koko);
         laitaKortitPakkaan();
         Collections.shuffle(pakka);        
     }
@@ -38,7 +38,7 @@ public class Korttipakka {
     private void laitaKortitPakkaan() {
         int i = 0;
         
-        while(i < 20) {
+        while(i < pakka.size()) {
             if(i % 2 != 0) {
                 pakka.add(new Kortti(i - 1));
             }
@@ -55,12 +55,11 @@ public class Korttipakka {
      * @return sekoitettu Korttipakka
      * 
      */   
-    public Korttipakka nollaaPakka() {
-        for(int i = 0; i < this.koko(); i++) {
-            this.getKortti(i).setTila(Tila.KIINNI);
-        }
+    public void nollaaPakka() {
+        pakka = new ArrayList<Kortti>();
+        laitaKortitPakkaan();
         Collections.shuffle(pakka);
-        return this;
+        
     } 
     
     /**

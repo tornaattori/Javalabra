@@ -9,6 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 import muistipeli.Kortit.Korttipakka;
+import muistipeli.toimintalogiikka.Peli;
 
 /**
  * Kayttoliittyma-luokka luo graafisen käyttöliittymän. Se toteuttaa
@@ -20,14 +21,16 @@ public class Kayttoliittyma implements Runnable {
 
     private Korttipakka pakka;
     private JFrame frame;
+    private Peli peli;
     
     /**
      * Konstuktorille annetaan parametriksi Korttipakka-olio. Konstruktori
      * alustaa pakka-luokkamuuttujan sen mukaan.
      * @param pakka 
      */
-    public Kayttoliittyma(Korttipakka pakka) {
+    public Kayttoliittyma(Korttipakka pakka, Peli peli) {
         this.pakka = pakka;  
+        this.peli = peli;
         
     }
     
@@ -69,11 +72,11 @@ public class Kayttoliittyma implements Runnable {
         valikko.add(valikkoPeli);
                
         JMenuItem valikkoUusi = new JMenuItem("Uusi peli");
-        valikkoUusi.addActionListener(new ValikonKuuntelija(this));
+        valikkoUusi.addActionListener(new ValikonKuuntelija(this, peli));
         valikkoPeli.add(valikkoUusi);
         
         JMenuItem valikkoLopeta = new JMenuItem("Lopeta");
-        valikkoLopeta.addActionListener(new ValikonKuuntelija(this));
+        valikkoLopeta.addActionListener(new ValikonKuuntelija(this, peli));
         valikkoPeli.add(valikkoLopeta);
         
         frame.setJMenuBar(valikko);
