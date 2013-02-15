@@ -3,8 +3,6 @@ package muistipeli.gui;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -29,15 +27,15 @@ public class Kayttoliittyma implements Runnable {
      * @param pakka 
      */
     public Kayttoliittyma(Korttipakka pakka) {
-        this.pakka = pakka;        
+        this.pakka = pakka;  
+        
     }
     
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
         frame.setPreferredSize(new Dimension(800, 300));
-
-        
+       
         luoKomponentit(frame.getContentPane());
         luoValikko();
               
