@@ -8,10 +8,10 @@ public class Kyselija {
     String kysyNimi() {        
         String nimi; 
         while (true) {
-            nimi = JOptionPane.showInputDialog("Iske nimee kehii, ei sit mitää kynysii merkkei"); 
+            nimi = JOptionPane.showInputDialog("Syötä nimesi: "); 
             
             if(nimi.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No stikkaa ny jotain nimee kehiin");
+                JOptionPane.showMessageDialog(null, "Ei");
             }           
             else {
                 break;
@@ -23,25 +23,24 @@ public class Kyselija {
     int kysyKorttienMaara() {
         Integer korttienMaara;
         while (true) {
-           korttienMaara = Integer.parseInt(JOptionPane.showInputDialog("Kuin"
-                   + " monel fläbäl säädetää? Vähintään 8, Enintään 30"));
+           korttienMaara = Integer.parseInt(JOptionPane.showInputDialog("Monella"
+                   + "kortilla pelataan? min 8, max 30"));
            
            if(korttienMaara % 2 != 0 && (korttienMaara < 8 || korttienMaara > 30)) {
-               JOptionPane.showMessageDialog(null, "Hei mitä sä nyt pelleilet"
-                       + "ihan puihin meni toi sun paskalukus!");
+               JOptionPane.showMessageDialog(null, "Luku on liian pieni, eikä"
+                       + "se ole sitä paitsi parillinen");
            }
            
            else if(korttienMaara % 2 != 0) {
-               JOptionPane.showMessageDialog(null, "Heeeeeiii se näin mee daiju!"
-                       + " Stikkaa pykälään ny parillinen luku!");
+               JOptionPane.showMessageDialog(null, "Syötä parillinen luku");
            } 
            
            else if(korttienMaara < 8 || korttienMaara > 30) {
-               JOptionPane.showMessageDialog(null, "Mitä mitä lukui?! Hiffaatsä: 8-30");
+               JOptionPane.showMessageDialog(null, "Kortteja pitää olla 8-30");
            }
            
            else if(korttienMaara.intValue() == 0) {
-               JOptionPane.showMessageDialog(null, "No älä ny säädä mitään, stikkaa ny jotain lukui!");
+               JOptionPane.showMessageDialog(null, "Ei käy");
            }
            
            else {

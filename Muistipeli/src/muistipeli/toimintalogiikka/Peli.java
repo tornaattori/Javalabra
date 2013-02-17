@@ -112,7 +112,8 @@ public class Peli {
             }
             
             if(peliLoppui(loydetytParit, vuorot)){
-                break;
+                 JOptionPane.showConfirmDialog(null, "Peli loppu, "
+                        + "otetaanks uus rundi?", null, JOptionPane.YES_NO_OPTION);
             }
         }
     }
@@ -194,8 +195,8 @@ public class Peli {
     
     @Override
     public String toString() {
-        return "Noni" + pelaaja.getNimi() + " (kiitti nimest), se oli siin! Aikaa meni " +
-                ajastin.getKokonaisaika() + " sekkaa, eli liikaa.";
+        return "Peli ohi " + pelaaja.getNimi() + "! Aikaa meni " + ajastin.getKokonaisaika() +
+                ". ";
                 
     }
 }
