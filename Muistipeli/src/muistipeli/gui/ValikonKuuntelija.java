@@ -37,7 +37,8 @@ public class ValikonKuuntelija implements ActionListener {
             }
         }
         else if(valinta.equals("Lopeta")) {
-            System.out.println("je");
+            System.exit(0);
+            
         }
     }
 

@@ -1,5 +1,4 @@
 
-import muistipeli.gui.Dialogi;
 import muistipeli.toimintalogiikka.Peli;
 
 public class Muistipeli {

@@ -2,7 +2,8 @@
 
 package muistipeli.Kortit;
 
-import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JButton;
 
 /** 
@@ -37,11 +38,15 @@ public class Kortti extends JButton{
      */
     public Kortti(int id) {
         super("KIINNI");
+        this.setSize(200, 300);
         this.id = id;
+        Font fontti = new Font("Courier New", Font.BOLD, 30);
+        this.setFont(fontti);
         tila = Tila.KIINNI;
         
+        
+        
     }
-
     
     /**
      * Metodi "kääntää" kortin, eli muuttaa sen Tilan joko AUKI-tilasta
@@ -69,10 +74,6 @@ public class Kortti extends JButton{
             tila = Tila.PIILOSSA;
             this.setVisible(false);
         }
-    }
-    
-    public void setTila(Tila tila) {
-        this.tila = tila;
     }
     
     public Tila getTila() {

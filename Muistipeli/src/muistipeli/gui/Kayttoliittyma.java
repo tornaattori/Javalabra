@@ -18,7 +18,6 @@ import muistipeli.toimintalogiikka.Peli;
  */
 
 public class Kayttoliittyma implements Runnable {
-
     private Korttipakka pakka;
     private JFrame frame;
     private Peli peli;
@@ -30,14 +29,13 @@ public class Kayttoliittyma implements Runnable {
      */
     public Kayttoliittyma(Korttipakka pakka, Peli peli) {
         this.pakka = pakka;  
-        this.peli = peli;
-        
+        this.peli = peli;       
     }
     
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
-        frame.setPreferredSize(new Dimension(800, 300));
+        frame.setPreferredSize(new Dimension(haeLeveys(), 500));
        
         luoKomponentit(frame.getContentPane());
         luoValikko();
@@ -79,7 +77,16 @@ public class Kayttoliittyma implements Runnable {
         valikkoLopeta.addActionListener(new ValikonKuuntelija(this, peli));
         valikkoPeli.add(valikkoLopeta);
         
-        frame.setJMenuBar(valikko);
+        frame.setJMenuBar(valikko);   
+    }
+    
+    public void sulje() {
+        frame.dispose();
+    }
+    
+    private int haeLeveys() {
+        return (pakka.koko() / 2) * 200;
         
     }
+  
 }

@@ -1,5 +1,6 @@
 package muistipeli.toimintalogiikka;
 
+import muistipeli.gui.Kyselija;
 import javax.swing.JOptionPane;
 import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Korttipakka;
@@ -30,7 +31,6 @@ public class Peli {
      */
     private Korttipakka pakka;
     
-    //Pelaaja ei tee vielä mitään.
     private Pelaaja pelaaja;
     
     private Ajastin ajastin;
@@ -50,12 +50,12 @@ public class Peli {
     private Kortti kortti1, kortti2;
 
     /**
-     * Peli-luokan konstruktori alustaa luokkamuuttujat. Se myös kutsuu
-     * kysyTiedot()-metodia. Lopuksi se lisää pakan korteille NapinKuuntelijat
+     * Peli-luokan konstruktori alustaa luokkamuuttujat. Se myös selvittää
+     * parametrit pelaajalle ja pakalle Kyselija-olion avulla.
+     * Lopuksi se lisää pakan korteille NapinKuuntelijat
      * ja käyttöliittymälle ValikonKuuntelijan.
      * 
-     * @author Markku Korhonen
-     * @see kysyTiedot()
+     * @author Markku Korhonen 
      */
     public Peli() {   
         kyselija = new Kyselija();
@@ -73,24 +73,23 @@ public class Peli {
         
         valikonKuuntelija = new ValikonKuuntelija(kali, this);   
     }
-    
+   
     /**
-     * Metodi lyö ruudulle ikkunan, johon pelaaja syöttää nimensä.
-     * Tämän jälkeen metodi kysyy vielä uudessa ikkunassa halutun
-     * koon.
-     */
-  
-
-    /**
-     * Käynnistää pelin ja määrää pelin logiikan. 
+     * Käynnistää ja lopettaa pelin sekä määrää sen logiikan. 
      * <p>
      * Aluksi käynnistetään graafinen käyttöliittymä. Peli etenee siten,
      * että valitaan kaksi korttia ja tarkistetaan ovatko ne parit.
      * Löydetyt parit ynnätään int-muuttujaan loydetytParit. Samalla lasketaan
-     * vuorot. Kun löydettyjen parien määrä on sama kuin pakan koko jaettuna
-     * kahdella, ts. kaikki parit on löydetty, peli loppuu.
+     * vuorot.
+     * <p>
+     * Metodi luuppaa kunnes kaikki parit on löydetty, mikä tarkistetaan
+     * jokaisen luupin lopussa kutsumalla peliLoppui-metodia. Mikäli palautetaan
+     * 'true', kutsutaan lopetaPeli-metodia.
      * 
      * @throws InterruptedException 
+     * @see valitseKortit()
+     * @see peliLoppui()
+     * @see lopetaPeli()
      */
     
     public void pelaa() throws InterruptedException {       
@@ -104,16 +103,14 @@ public class Peli {
             
             if(tarkastaPari()) {
                 loydetytParit++;
-                vuorot++;
-                pelaaja.lisaaPiste();                
+                vuorot++;               
             }           
             else {
                 vuorot++;
             }
             
             if(peliLoppui(loydetytParit, vuorot)){
-                 JOptionPane.showConfirmDialog(null, "Peli loppu, "
-                        + "otetaanks uus rundi?", null, JOptionPane.YES_NO_OPTION);
+                lopetaPeli();           
             }
         }
     }
@@ -168,14 +165,17 @@ public class Peli {
         }
         return false;
     }
-    
+ 
     /**
-     * Käynnistää pelin alusta. Varsinainen ohjelma ei kuitenkaan nollaudu,
-     * vaan Kortit käännetään piiloon ja sekoitetaan ilman, että käyttäjän
-     * tarvitsee syöttää nimeään ja valita vaikeustasoa uudestaan.
+     * Metodi tarkastaa onko peli loppu. Aluksi pakan koko jaetaan kahdella
+     * ja tulosta verrataan parametrinä saatuna löydettyjen parien määrään.
+     * Mikäli ne ovat samat, metodi pysäyttää ajastimen ja pelin tuloksen sekä
+     * palauttaa 'true'.
      * <p>
-     * Pelaajan jo ansaitut pisteet eivät rekisteröidy, vaan nollautuvat.
-     * @throws InterruptedException 
+     * Jos kaikkia pareja ei ole löydetty, palauttaa metodi 'false'.
+     * @param loydetytParit
+     * @param vuorot
+     * @return true, jos kaikki parit ovat löytyneet, muuten false
      */
     
     private boolean peliLoppui(int loydetytParit, int vuorot) {
@@ -188,15 +188,47 @@ public class Peli {
         return false;
     }
     
+    /**
+     * Metodi kysyy käyttäjältä, että pelataanko uudestaan vai ei.
+     * Jos käyttäjä vastaa Kyllä, kutsutaan kaynnistaUudelleen()-metodia.
+     * Muussa tapauksessa kutsutaan Kayttoliittyman sulje()-metodia.
+     * @see kaynnistaUudelleen()
+     * @see Kayttoliittyma.sulje()
+     * @throws InterruptedException 
+     */
+    
+    private void lopetaPeli() throws InterruptedException {
+        int vastaus = JOptionPane.showConfirmDialog(null, "Peli loppui, "
+                    + "uudestaan?", null, JOptionPane.YES_NO_OPTION);
+            
+            if(vastaus == 1) {
+                this.kaynnistaUudelleen();
+            }            
+            else {
+                System.exit(0);
+            }
+    }
+    
+    /**
+     * Käynnistää pelin alusta. Varsinainen ohjelma ei kuitenkaan nollaudu,
+     * vaan Kortit käännetään piiloon ja sekoitetaan ilman, että käyttäjän
+     * tarvitsee syöttää nimeään ja valita vaikeustasoa uudestaan.
+     * <p>
+     * Pelaajan jo ansaitut pisteet eivät rekisteröidy, vaan nollautuvat.
+     * @throws InterruptedException 
+     */
     
     public void kaynnistaUudelleen() throws InterruptedException {
-        pakka.nollaaPakka();       
+        kali.sulje();
+        pakka = pakka.nollaaPakka();
+       // pelaaja.nollaaPisteet();
+        
     }
     
     @Override
     public String toString() {
         return "Peli ohi " + pelaaja.getNimi() + "! Aikaa meni " + ajastin.getKokonaisaika() +
-                ". ";
+                " sekuntia. ";
                 
     }
 }

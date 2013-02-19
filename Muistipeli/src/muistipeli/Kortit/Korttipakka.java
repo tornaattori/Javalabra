@@ -59,11 +59,9 @@ public class Korttipakka {
      * @return sekoitettu Korttipakka
      * 
      */   
-    public void nollaaPakka() {
-        pakka = new ArrayList<Kortti>();
-        laitaKortitPakkaan();
-        Collections.shuffle(pakka);
-        
+    public Korttipakka nollaaPakka() {
+        Korttipakka uusiPakka = new Korttipakka(koko);
+        return uusiPakka;
     } 
     
     /**
