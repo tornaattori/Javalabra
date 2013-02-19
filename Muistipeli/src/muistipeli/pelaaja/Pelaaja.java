@@ -12,6 +12,7 @@ package muistipeli.pelaaja;
 public class Pelaaja {
 
     private String nimi;
+    private int pisteet;
     
     /**
      * Konstruktori luo pelaajan. Nimi kysytään pelin asuksi ja
@@ -20,6 +21,7 @@ public class Pelaaja {
      */
     public Pelaaja(String nimi) {
         this.nimi = nimi;
+        pisteet = 0;
       
     }
     
@@ -27,6 +29,14 @@ public class Pelaaja {
      * Pelaajalle lisätään pisteitä löytyneistä korteista.
      * @param pisteet 
      */
+    
+    public void lisaaPisteet(int pisteet) {
+        this.pisteet = pisteet;
+    }
+    
+    public int getPisteet() {
+        return pisteet;
+    }
 
     public String getNimi() {
         return nimi;

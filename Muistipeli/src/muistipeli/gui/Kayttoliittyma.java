@@ -32,6 +32,12 @@ public class Kayttoliittyma implements Runnable {
         this.peli = peli;       
     }
     
+    /**
+     * Käynnistää Kayttoliittyman. Metodi luo ensiksi uuden JFrame-olion
+     * ja asettaa sille koon. Lopuksi muiden metodien avustuksella luodaan
+     * käyttöliittymän loput osat.
+     */
+    
     @Override
     public void run() {
         frame = new JFrame("Muistipeli");
@@ -55,8 +61,14 @@ public class Kayttoliittyma implements Runnable {
      */
     
     private void luoKomponentit(Container container) {     
-        GridLayout leiska = new GridLayout(2, 2);
-        container.setLayout(leiska);
+        if(pakka.koko() > 20) {
+            GridLayout leiska = new GridLayout(3, 3);
+            container.setLayout(leiska);
+        }
+        else {
+            GridLayout leiska = new GridLayout(2, 2);
+            container.setLayout(leiska);
+        }
         
         for(int i = 0; i < pakka.koko(); i++) {
             container.add(pakka.getKortti(i));                    
