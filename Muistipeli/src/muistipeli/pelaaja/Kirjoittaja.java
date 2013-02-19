@@ -7,6 +7,8 @@ package muistipeli.pelaaja;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import muistipeli.Kortit.Korttipakka;
@@ -16,19 +18,21 @@ public class Kirjoittaja {
     private Pelaaja pelaaja;
     private PrintWriter kirjoittaja;
        
-    public Kirjoittaja(Pelaaja pelaaja, File tiedosto) throws FileNotFoundException {
+    public Kirjoittaja(Pelaaja pelaaja, File tiedosto) throws FileNotFoundException, IOException {
         this.pelaaja = pelaaja;
 
-        kirjoittaja = new PrintWriter(tiedosto);       
+        kirjoittaja = new PrintWriter(new FileWriter(tiedosto, true));       
     }
     
     public void kirjoita() {
+       
+        
+        
+        
         String kirjoitettava = pelaaja.getNimi() + ", " + pelaaja.getPisteet();
+        
         kirjoittaja.println(kirjoitettava); 
+        kirjoittaja.close();
+        
     }
-    
-    public void kirjoitaj() {
-        kirjoittaja.println("toimiiks tää?");
-    }
-    
 }

@@ -7,6 +7,7 @@ package muistipeli.pelaaja;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Pisteyttaja {
 
@@ -15,7 +16,7 @@ public class Pisteyttaja {
     private Pelaaja pelaaja;
     private int koko;
     
-    public Pisteyttaja(Pelaaja pelaaja, int koko) throws FileNotFoundException {
+    public Pisteyttaja(Pelaaja pelaaja, int koko) throws FileNotFoundException, IOException {
         this.pelaaja = pelaaja;
         this.koko = koko;
         File tiedosto = new File("/Users/kinkki/Opiskelu/Javalabra/Muistipeli/tulokset/top" + koko + ".csv");
@@ -26,16 +27,17 @@ public class Pisteyttaja {
     
     public void pisteyta() {
         if(lisataankoPelaajanPisteet()) {
-            kirjoittaja.kirjoita();
+            kirjoittaja.kirjoita();    
         }
     }
     
     private boolean lisataankoPelaajanPisteet() {
-        if(pelaaja.getPisteet() > lukija.palautaViimeinenArvo()) {
+        if(pelaaja.getPisteet() > lukija.palautaViimeinenArvo() || lukija.haeTulostenMaara() < 10) {
             return true;
         }
         return false;
     }
+
     
     public void listaaPisteet() {
         lukija.listaaPisteet();
