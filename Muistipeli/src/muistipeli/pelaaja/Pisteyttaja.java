@@ -8,17 +8,18 @@ package muistipeli.pelaaja;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Pisteyttaja {
 
     private Lukija lukija;
     private Kirjoittaja kirjoittaja;
     private Pelaaja pelaaja;
-    private int koko;
+    
     
     public Pisteyttaja(Pelaaja pelaaja, int koko) throws FileNotFoundException, IOException {
         this.pelaaja = pelaaja;
-        this.koko = koko;
         File tiedosto = new File("/Users/kinkki/Opiskelu/Javalabra/Muistipeli/tulokset/top" + koko + ".csv");
         
         lukija = new Lukija(tiedosto);

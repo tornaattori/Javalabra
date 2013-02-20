@@ -29,7 +29,7 @@ public class Kirjoittaja {
         
         
         
-        String kirjoitettava = pelaaja.getNimi() + ", " + pelaaja.getPisteet();
+        String kirjoitettava = pelaaja.getNimi() + "," + pelaaja.getPisteet();
         
         kirjoittaja.println(kirjoitettava); 
         kirjoittaja.close();

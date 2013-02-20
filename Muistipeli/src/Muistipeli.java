@@ -23,6 +23,8 @@ public class Muistipeli {
        kirjoittaja.kirjoita();
        lukija.listaaPisteet();
        
+       System.out.println(lukija.lueLista());
+       
     }
 
 }

@@ -3,15 +3,20 @@ package muistipeli.pelaaja;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Lukija {
     
     private Scanner lukija;
+    private Map<String, Integer> tuloslista;
     
     public Lukija(File tiedosto) throws FileNotFoundException {
         this.lukija = new Scanner(tiedosto);
+        tuloslista = new HashMap<String, Integer>();
+        
     }
     
     public int palautaViimeinenArvo() {
@@ -65,6 +70,18 @@ public class Lukija {
         return i;
     }
     
+    public Map<String, Integer> lueLista() {
+        while(lukija.hasNextLine()) {
+            String[] tulokset = lukija.nextLine().split(",");
+            
+            tuloslista.put(tulokset[0], Integer.parseInt(tulokset[1]));
+            tuloslista.put("m", 1);
+        }
+        
+        return tuloslista;
+        
+        
+    }
 
 
 }

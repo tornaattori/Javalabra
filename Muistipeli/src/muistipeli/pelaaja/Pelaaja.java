@@ -2,6 +2,8 @@
 
 package muistipeli.pelaaja;
 
+import java.util.Map;
+
 /**
  * Pelaaja-luokka tallentaa pelaajan tiedot. Sinne myös annetaan pelaajan
  * pisteet, jotka tallennetaan TOP-listaan.
@@ -41,5 +43,4 @@ public class Pelaaja {
     public String getNimi() {
         return nimi;
     }
-    
 }
