@@ -18,13 +18,8 @@ public class Muistipeli {
        Korttipakka pakka = new Korttipakka(10);
        File tiedosto = new File("/Users/kinkki/Opiskelu/Javalabra/Muistipeli/tulokset/top" + pakka.koko() + ".csv");
        
-       Kirjoittaja kirjoittaja = new Kirjoittaja(pelaaja, tiedosto);
-       Lukija lukija = new Lukija(tiedosto);
-       kirjoittaja.kirjoita();
-       lukija.listaaPisteet();
-       
-       System.out.println(lukija.lueLista());
-       
+       Pisteyttaja pisteyttaja = new Pisteyttaja(pelaaja, pakka.koko());
+        System.out.println(pisteyttaja.listaaPisteet());
     }
 
 }

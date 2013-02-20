@@ -11,10 +11,12 @@ import javax.swing.JOptionPane;
 public class Lukija {
     
     private Scanner lukija;
+    private Scanner apulukija;
     private Map<String, Integer> tuloslista;
     
     public Lukija(File tiedosto) throws FileNotFoundException {
         this.lukija = new Scanner(tiedosto);
+        this.apulukija = new Scanner(tiedosto);
         tuloslista = new HashMap<String, Integer>();
         
     }
@@ -71,11 +73,10 @@ public class Lukija {
     }
     
     public Map<String, Integer> lueLista() {
-        while(lukija.hasNextLine()) {
-            String[] tulokset = lukija.nextLine().split(",");
-            
+  
+        while(apulukija.hasNextLine()) {
+            String[] tulokset = apulukija.nextLine().split(",");          
             tuloslista.put(tulokset[0], Integer.parseInt(tulokset[1]));
-            tuloslista.put("m", 1);
         }
         
         return tuloslista;

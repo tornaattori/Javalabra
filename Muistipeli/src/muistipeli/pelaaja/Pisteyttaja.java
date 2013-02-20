@@ -16,8 +16,7 @@ public class Pisteyttaja {
     private Lukija lukija;
     private Kirjoittaja kirjoittaja;
     private Pelaaja pelaaja;
-    
-    
+       
     public Pisteyttaja(Pelaaja pelaaja, int koko) throws FileNotFoundException, IOException {
         this.pelaaja = pelaaja;
         File tiedosto = new File("/Users/kinkki/Opiskelu/Javalabra/Muistipeli/tulokset/top" + koko + ".csv");
@@ -28,7 +27,7 @@ public class Pisteyttaja {
     
     public void pisteyta() {
         if(lisataankoPelaajanPisteet()) {
-            kirjoittaja.kirjoita();    
+            kirjoittaja.kirjoita(lukija.lueLista());  
         }
     }
     
@@ -38,10 +37,8 @@ public class Pisteyttaja {
         }
         return false;
     }
-
     
     public void listaaPisteet() {
         lukija.listaaPisteet();
     }
-
 }

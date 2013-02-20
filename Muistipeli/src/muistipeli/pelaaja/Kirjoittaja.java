@@ -10,29 +10,23 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import muistipeli.Kortit.Korttipakka;
+import java.util.Map;
 
 public class Kirjoittaja {
     
     private Pelaaja pelaaja;
     private PrintWriter kirjoittaja;
        
-    public Kirjoittaja(Pelaaja pelaaja, File tiedosto) throws FileNotFoundException, IOException {
+    public Kirjoittaja(Pelaaja pelaaja, File tiedosto) 
+            throws FileNotFoundException, IOException {
+        
         this.pelaaja = pelaaja;
-
-        kirjoittaja = new PrintWriter(new FileWriter(tiedosto, true));       
+        kirjoittaja = new PrintWriter(new FileWriter(tiedosto, true));  
     }
     
-    public void kirjoita() {
-       
-        
-        
-        
-        String kirjoitettava = pelaaja.getNimi() + "," + pelaaja.getPisteet();
-        
-        kirjoittaja.println(kirjoitettava); 
-        kirjoittaja.close();
-        
+    public void kirjoita(Map<String, Integer> tulokset) {
+        for(String s: tulokset.keySet()) {
+            kirjoittaja.println(s);
+        }      
     }
 }
