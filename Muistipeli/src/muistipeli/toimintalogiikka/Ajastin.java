@@ -41,8 +41,8 @@ public class Ajastin {
      * Palauttaa laskimen laskeman ajan sekunteina.
      * @return 
      */
-    long getKokonaisaika() {
-        return ((loppuaika - alkuaika) / 1000);
+    int getKokonaisaika() {
+        return ((int)(loppuaika - alkuaika) / 1000);
     }
 
 }

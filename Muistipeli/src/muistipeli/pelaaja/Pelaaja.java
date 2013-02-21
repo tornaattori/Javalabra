@@ -15,6 +15,7 @@ public class Pelaaja {
 
     private String nimi;
     private int pisteet;
+    private Tulos tulos;
     
     /**
      * Konstruktori luo pelaajan. Nimi kysytään pelin asuksi ja
@@ -34,6 +35,7 @@ public class Pelaaja {
     
     public void lisaaPisteet(int pisteet) {
         this.pisteet = pisteet;
+        tulos = new Tulos(nimi, pisteet);
     }
     
     public int getPisteet() {
@@ -42,5 +44,9 @@ public class Pelaaja {
 
     public String getNimi() {
         return nimi;
+    }
+    
+    public Tulos getTulos() {
+        return tulos;
     }
 }

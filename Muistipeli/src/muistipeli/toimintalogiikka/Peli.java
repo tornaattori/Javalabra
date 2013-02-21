@@ -1,13 +1,16 @@
 package muistipeli.toimintalogiikka;
 
-import muistipeli.gui.Kyselija;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Korttipakka;
 import muistipeli.gui.Kayttoliittyma;
+import muistipeli.gui.Kyselija;
 import muistipeli.gui.NapinKuuntelija;
 import muistipeli.gui.ValikonKuuntelija;
 import muistipeli.pelaaja.Pelaaja;
+import muistipeli.pelaaja.Pisteyttaja;
 
 /**
  * Peli-luokka on Muistipelin keskeisin luokka, joka käytännössä yhdistää
@@ -92,7 +95,7 @@ public class Peli {
      * @see lopetaPeli()
      */
     
-    public void pelaa() throws InterruptedException {       
+    public void pelaa() throws InterruptedException, FileNotFoundException, IOException {       
         kali.run();
         int loydetytParit = 0;
         int vuorot = 0;
@@ -197,7 +200,12 @@ public class Peli {
      * @throws InterruptedException 
      */
     
-    private void lopetaPeli() throws InterruptedException {
+    private void lopetaPeli() throws InterruptedException, FileNotFoundException, IOException {
+        pelaaja.lisaaPisteet(ajastin.getKokonaisaika());
+        Pisteyttaja pisteyttaja = new Pisteyttaja(pelaaja, pakka.koko());
+        pisteyttaja.lisaaPisteet();
+        pisteyttaja.naytaTulokset();
+        
         int vastaus = JOptionPane.showConfirmDialog(null, "Peli loppui, "
                     + "uudestaan?", null, JOptionPane.YES_NO_OPTION);
             

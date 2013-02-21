@@ -32,15 +32,23 @@ public class Kirjoittaja {
     public List<Tulos> jarjestaLista(List<Tulos> tuloslista) {
         int i, j;
         Tulos pienin;
+        Tulos vaihdettava;
         
-        for(j = 0; j < tuloslista.size() - 1; j++) {
-            pienin = tuloslista.get(j);
+        for(i = 0; i < tuloslista.size() - 1; i++) {
+            pienin = tuloslista.get(i);
             
-            for(i = j + 1; i < tuloslista.size(); i++) {
-                if(tuloslista.get(i).getTulos() < pienin.getTulos()) {
-                    pienin = tuloslista.get(i);
+            for(j = i + 1; j < tuloslista.size(); j++) {
+                if(tuloslista.get(j).getTulos() < pienin.getTulos()) {
+                    pienin = tuloslista.get(j);
                 }
             }
+            if(!pienin.equals(pienin)){
+                System.out.println("!equals");
+                vaihdettava  = tuloslista.get(i);
+                tuloslista.add(i, pienin);
+                tuloslista.add(j, vaihdettava);
+            }
+            
         }
         return tuloslista;
         
