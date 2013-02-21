@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Kirjoittaja {
@@ -21,18 +22,31 @@ public class Kirjoittaja {
     public void kirjoita(Tulos tulos) {
         lista.add(tulos);
 
-        List<Tulos> apulista = new ArrayList(jarjestaLista(lista));
+        //List<Tulos> apulista = new ArrayList(jarjestaLista(lista));
         
-        for(int i = 0; i < apulista.size(); i++) {
-            kirjoittaja.println(apulista.get(i).toString());        
+        jarjestaLista(lista);
+        
+        if(lista.size() > 9) {
+            lista.remove(10);
+        }      
+        
+        for(int i = 0; i < lista.size(); i++) {
+            kirjoittaja.println(lista.get(i).toString());        
         }
+       
         kirjoittaja.close();
     }
     
+    /**
+     * Selection-sort
+     * @param tuloslista
+     * @return 
+     */
+    
     public List<Tulos> jarjestaLista(List<Tulos> tuloslista) {
-        int i, j;
+        
+        int i, j, indeksi = 0;
         Tulos pienin;
-        Tulos vaihdettava;
         
         for(i = 0; i < tuloslista.size() - 1; i++) {
             pienin = tuloslista.get(i);
@@ -40,17 +54,13 @@ public class Kirjoittaja {
             for(j = i + 1; j < tuloslista.size(); j++) {
                 if(tuloslista.get(j).getTulos() < pienin.getTulos()) {
                     pienin = tuloslista.get(j);
+                    indeksi = j;
                 }
             }
-            if(!pienin.equals(pienin)){
-                System.out.println("!equals");
-                vaihdettava  = tuloslista.get(i);
-                tuloslista.add(i, pienin);
-                tuloslista.add(j, vaihdettava);
-            }
-            
+            if(!pienin.equals(tuloslista.get(i))){
+                Collections.swap(lista, i, indeksi);
+            }           
         }
         return tuloslista;
-        
     }
 }

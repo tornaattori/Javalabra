@@ -14,11 +14,9 @@ public class Pisteyttaja {
     private Kirjoittaja kirjoittaja;
     private Pelaaja pelaaja;
     private File tiedosto;
-    private int koko;
     private List<Tulos>apulista;
     
     public Pisteyttaja(Pelaaja pelaaja, int koko) throws FileNotFoundException, IOException {
-        this.koko = koko;
         lukija = new Lukija();
         this.pelaaja = pelaaja;
         tiedosto = new File("/Users/kinkki/Opiskelu/Javalabra/Muistipeli/tulokset/top" + 
@@ -32,25 +30,11 @@ public class Pisteyttaja {
             kirjoittaja.kirjoita(pelaaja.getTulos());
         }
         
-        else if(lisataanko(pelaaja.getTulos())) {
+        else {
             kirjoittaja.kirjoita(pelaaja.getTulos());
-        }
+        }      
+    }
         
-    }
-    
-    private boolean lisataanko(Tulos tulos) throws FileNotFoundException {
-        int suurin = apulista.get(0).getTulos();
-        for(int i = 0; i < koko; i++) {
-            if(apulista.get(i).getTulos() > suurin) {
-                suurin = apulista.get(i).getTulos();
-            }
-        }
-        if(tulos.getTulos() < suurin) {
-            return true;
-        }
-        return false;
-    }
-    
     public void naytaTulokset() throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         
@@ -60,8 +44,5 @@ public class Pisteyttaja {
             sb.append("\n");
         }
         JOptionPane.showMessageDialog(null, sb.toString());
-    }
-    
-    
-    
+    }  
 }

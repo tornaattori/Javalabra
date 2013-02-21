@@ -23,5 +23,4 @@ public class Tulos {
     public String toString() {
         return nimi + "," + tulos;
     }
-    
 }
