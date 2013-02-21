@@ -3,86 +3,30 @@ package muistipeli.pelaaja;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class Lukija {
     
-    private Scanner lukija;
-    private Scanner apulukija;
-    private Map<String, Integer> tuloslista;
+    public Lukija() throws FileNotFoundException {
+
+    }    
     
-    public Lukija(File tiedosto) throws FileNotFoundException {
-        this.lukija = new Scanner(tiedosto);
-        this.apulukija = new Scanner(tiedosto);
-        tuloslista = new HashMap<String, Integer>();
-        
-    }
-    
-    public int palautaViimeinenArvo() {
-        String viimeinenArvo = "0";
-        
-        while(lukija.hasNextLine()) {
-            viimeinenArvo = lukija.nextLine();
-        }
-        return Integer.parseInt(viimeinenArvo);
-    }
-    
-    public void listaaPisteet() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("TOP10-lista 10 kokoiselle muistipelille: \n \n");
-        
-        int i = 1;    
-        while(lukija.hasNextLine()) {
+    public List<Tulos> lueTiedosto(File tiedosto) throws FileNotFoundException {
+        Scanner lukija = new Scanner(tiedosto);
+        List<Tulos> tuloslista = new ArrayList();
+
+        while( true ) {            
+            if(lukija.hasNext() == false) {
+                break;
+            }
+            String[] aputaulukko = lukija.nextLine().split(",");
+            Tulos tulos = new Tulos(aputaulukko[0], Integer.parseInt(aputaulukko[1]));
             
-            sb.append(i);
-            sb.append(". sija: ");
-            sb.append(lukija.nextLine());
-            sb.append("\n");
-            
-            i = i + 1;
+            tuloslista.add(tulos);
         }
-        
-        JOptionPane.showMessageDialog(null, sb.toString());
-    }
-    
-    public StringBuilder listaaPisteetKirjoittajalle() {
-        StringBuilder sb = new StringBuilder();
-        
-        int i = 1;    
-        while(lukija.hasNextLine()) {
-            
-            sb.append(i);
-            sb.append(". sija: ");
-            sb.append(lukija.nextLine());
-            sb.append("\n");
-            
-            i = i + 1;
-        }
-        return sb;
-    }
-    
-    public int haeTulostenMaara() {
-        int i = 0;
-        while(lukija.hasNextLine()) {
-            i = i + 1;
-        }     
-        return i;
-    }
-    
-    public Map<String, Integer> lueLista() {
-  
-        while(apulukija.hasNextLine()) {
-            String[] tulokset = apulukija.nextLine().split(",");          
-            tuloslista.put(tulokset[0], Integer.parseInt(tulokset[1]));
-        }
-        
         return tuloslista;
-        
-        
     }
-
-
+    
 }

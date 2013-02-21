@@ -1,21 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package muistipeli.pelaaja;
 
 public class Tulos {
     
-    private Pelaaja pelaaja;
+    private int tulos;
+    private String nimi;
     
-    public Tulos(Pelaaja pelaaja) {
-        this.pelaaja = pelaaja;
+    public Tulos(String nimi, int tulos) {
+        this.nimi = nimi;
+        this.tulos = tulos;
     }
     
+    public int getTulos() {
+        return tulos;
+    }
+    
+    public String getNimi() {
+        return nimi;
+    }
+
     @Override
     public String toString() {
-        return pelaaja.getNimi() + ": " + pelaaja.getPisteet();
+        return nimi + "," + tulos;
     }
     
 }
