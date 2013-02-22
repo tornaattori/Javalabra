@@ -15,7 +15,7 @@ import java.util.List;
 public class Korttipakka {
     
     /**
-     * Kortit säilötään listaan. 
+     * Kortit säilötään luokkamuuttujana olevaan listaan. 
      */
     private List<Kortti> pakka;
     
@@ -23,13 +23,13 @@ public class Korttipakka {
     
     /**
      * Korttipakan konstruktori alustaa pakka-nimisen ArrayList-listan. Tämän
-     * jälkeen se lisää kortit listaan käyttämällä laitaKortitPakkaan-metodia
+     * jälkeen se lisää kortit listaan käyttämällä laitaKortitPakkaan()-metodia
      * ja sekoittaa korttien järjestyksen.
      */
     public Korttipakka(int koko) {
-        this.koko = koko;
-        
+        this.koko = koko;     
         pakka = new ArrayList();
+        
         laitaKortitPakkaan();
         Collections.shuffle(pakka);        
     }

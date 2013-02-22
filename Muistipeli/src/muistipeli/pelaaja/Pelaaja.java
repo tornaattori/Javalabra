@@ -2,11 +2,9 @@
 
 package muistipeli.pelaaja;
 
-import java.util.Map;
-
 /**
- * Pelaaja-luokka tallentaa pelaajan tiedot. Sinne myös annetaan pelaajan
- * pisteet, jotka tallennetaan TOP-listaan.
+ * Pelaaja-luokka tallentaa pelaajan tiedot. Sille annetaan myös pelaajan
+ * aika, jotka tallennetaan TOP-listaan.
  * 
  * @author kinkki
  */
@@ -14,32 +12,29 @@ import java.util.Map;
 public class Pelaaja {
 
     private String nimi;
-    private int pisteet;
+    private int sekuntit;
     private Tulos tulos;
     
     /**
      * Konstruktori luo pelaajan. Nimi kysytään pelin asuksi ja
-     * laitetaan parametriksi. Pisteet alustetaan nollaan.
+     * laitetaan parametriksi. Sekuntit alustetaan nollaan.
      * @param nimi 
      */
     public Pelaaja(String nimi) {
         this.nimi = nimi;
-        pisteet = 0;
+        sekuntit = 0;
       
     }
     
     /**
-     * Pelaajalle lisätään pisteitä löytyneistä korteista.
+     * Metodi lisää pelaajalle korttien löytämiseen käytetyt ja luo uuden
+     * Tulos-olion.
      * @param pisteet 
      */
     
-    public void lisaaPisteet(int pisteet) {
-        this.pisteet = pisteet;
-        tulos = new Tulos(nimi, pisteet);
-    }
-    
-    public int getPisteet() {
-        return pisteet;
+    public void lisaaSekuntit(int sekuntit) {
+        this.sekuntit = sekuntit;
+        tulos = new Tulos(nimi, sekuntit);
     }
 
     public String getNimi() {

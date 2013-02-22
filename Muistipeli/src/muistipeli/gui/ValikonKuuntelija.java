@@ -36,6 +36,7 @@ public class ValikonKuuntelija implements ActionListener {
                 Logger.getLogger(ValikonKuuntelija.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         else if(valinta.equals("Lopeta")) {
             System.exit(0);
             

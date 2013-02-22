@@ -2,7 +2,6 @@
 
 package muistipeli.Kortit;
 
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 
@@ -32,7 +31,8 @@ public class Kortti extends JButton{
     
     /**
      *Kortin konstruktori ottaa parametrikseen id-numeron.
-     * Samalla asettaa tilaksi "KIINNI".
+     * Samalla asettaa tilaksi "KIINNI", määritetään kortin kooksi
+     * 200 * 300 pikseliä ja kortin fontti 30 kokoiseksi Courier New:ksi.
      * @param id
      * @see Tila
      */
@@ -43,9 +43,7 @@ public class Kortti extends JButton{
         Font fontti = new Font("Courier New", Font.BOLD, 30);
         this.setFont(fontti);
         tila = Tila.KIINNI;
-        
-        
-        
+
     }
     
     /**

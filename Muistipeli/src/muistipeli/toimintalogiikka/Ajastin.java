@@ -7,10 +7,10 @@ public class Ajastin {
     private long alkuaika, loppuaika;
     
     /**
-     * Ajastin-luokka laskee jossain tehtävässä kuluneen ajan ja kertoo
+     * Ajastin-luokka laskee korttien löytämisessä kuluneen ajan ja kertoo
      * sen sekunteina.
      */
-    public Ajastin() {
+    Ajastin() {
     }
     
     /**

@@ -1,13 +1,9 @@
-package muistipeli.kortit;
+package muistipeli.kortitTest;
 
 import muistipeli.Kortit.Kortti;
 import muistipeli.Kortit.Tila;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class KorttiTest {
     

@@ -75,7 +75,7 @@ public class Kyselija {
     }
     
     private boolean tarkistaNimi(String nimi) {
-        if(nimi.isEmpty()) {
+        if(nimi.isEmpty() || nimi.contains(",")||nimi.contains(" ")) {
                 JOptionPane.showMessageDialog(null, "Ei kelpaa");
                 return false;
         }           

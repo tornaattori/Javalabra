@@ -1,18 +1,29 @@
 
 package muistipeli.pelaaja;
 
+/**
+ * Tulos-luokka tallentaa Pelaajan tuloksen. 
+ * @author Markku Korhonen
+ */
+
 public class Tulos {
     
-    private int tulos;
+    private int sekuntit;
     private String nimi;
     
-    public Tulos(String nimi, int tulos) {
+    /**
+     * Konstruktori saa parametrikseen Pelaajan nimen ja korttien löytämiseen
+     * käytetyt sekuntit. Luokkamuuttujat alustetaan.
+     * @param nimi
+     * @param sekuntit 
+     */
+    public Tulos(String nimi, int sekuntit) {
         this.nimi = nimi;
-        this.tulos = tulos;
+        this.sekuntit = sekuntit;
     }
     
-    public int getTulos() {
-        return tulos;
+    public int getSekuntit() {
+        return sekuntit;
     }
     
     public String getNimi() {
@@ -21,6 +32,6 @@ public class Tulos {
 
     @Override
     public String toString() {
-        return nimi + "," + tulos;
+        return nimi + "," + sekuntit;
     }
 }

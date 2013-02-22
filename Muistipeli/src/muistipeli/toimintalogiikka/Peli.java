@@ -10,11 +10,12 @@ import muistipeli.gui.Kyselija;
 import muistipeli.gui.NapinKuuntelija;
 import muistipeli.gui.ValikonKuuntelija;
 import muistipeli.pelaaja.Pelaaja;
-import muistipeli.pelaaja.Pisteyttaja;
+import muistipeli.tiedostonkasittelija.Pisteyttaja;
 
 /**
  * Peli-luokka on Muistipelin keskeisin luokka, joka käytännössä yhdistää
- * kaikki muut luokat ja mahdollistaa ohjelman käynnistämisen.
+ * välittömästi tai välilliseti kaikki muut luokat ja mahdollistaa ohjelman 
+ * suorittamisen.
  * 
  * @author kinkki
  */
@@ -86,8 +87,8 @@ public class Peli {
      * vuorot.
      * <p>
      * Metodi luuppaa kunnes kaikki parit on löydetty, mikä tarkistetaan
-     * jokaisen luupin lopussa kutsumalla peliLoppui-metodia. Mikäli palautetaan
-     * 'true', kutsutaan lopetaPeli-metodia.
+     * jokaisen luupin lopussa kutsumalla peliLoppui()-metodia. Mikäli 
+     * metodi palauttaa 'true', kutsutaan lopetaPeli()-metodia.
      * 
      * @throws InterruptedException 
      * @see valitseKortit()
@@ -201,7 +202,7 @@ public class Peli {
      */
     
     private void lopetaPeli() throws InterruptedException, FileNotFoundException, IOException {
-        pelaaja.lisaaPisteet(ajastin.getKokonaisaika());
+        pelaaja.lisaaSekuntit(ajastin.getKokonaisaika());
         Pisteyttaja pisteyttaja = new Pisteyttaja(pelaaja, pakka.koko());
         pisteyttaja.lisaaPisteet();
         pisteyttaja.naytaTulokset();
@@ -217,7 +218,10 @@ public class Peli {
             }
     }
     
+    
     /**
+     * HUOM! Metodi ei vielä toimi (22.2 klo 12:24)
+     * 
      * Käynnistää pelin alusta. Varsinainen ohjelma ei kuitenkaan nollaudu,
      * vaan Kortit käännetään piiloon ja sekoitetaan ilman, että käyttäjän
      * tarvitsee syöttää nimeään ja valita vaikeustasoa uudestaan.

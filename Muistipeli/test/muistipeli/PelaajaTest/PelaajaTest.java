@@ -5,15 +5,12 @@
 package muistipeli.PelaajaTest;
 
 import muistipeli.pelaaja.Pelaaja;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * PelaajaTest testaa sekä Pelaaja- että Tulos-luokkaa.
  * @author kinkki
  */
 public class PelaajaTest {
@@ -35,17 +32,28 @@ public class PelaajaTest {
         assertTrue(pelaaja.getNimi().equals(nimi));
         }
     
-   /* @Test
+   @Test
     public void konstruktoriTestaus2() {
         Pelaaja pelaaja = new Pelaaja(nimi);
-        assertTrue(pelaaja.getPisteet() == 0);
+        assertTrue(pelaaja.getTulos().getSekuntit() == 0);
     }
     
     @Test
     public void pisteidenLisaaminen() {
-        for(int i = 0; i < 20; i++) {
-            testipelaaja.lisaaPiste();
-        }
-    }*/
+        testipelaaja.lisaaSekuntit(20);
+        assertTrue(testipelaaja.getTulos().getSekuntit() == 20);            
+    }
+    
+    @Test
+    public void nimiOnOikea() {
+        assertTrue(testipelaaja.getNimi().equals(nimi));
+    }
+    
+    @Test
+    public void nimiOnOikea2() {
+        assertTrue(testipelaaja.getNimi().equals(testipelaaja.getTulos().getNimi()));
+    }
+    
+    
     
 }
