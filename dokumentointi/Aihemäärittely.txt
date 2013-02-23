@@ -6,9 +6,9 @@ kortteja. Kortteja voi kääntää kaksi yhden vuoron aikana. Uuden vuoron alkae
 kortit piilotetaan jälleen. Kun käyttäjä löytää parin, kortit poistetaan pelilaudalta. 
 Kun kaikki kortit on löydetty, peli loppuu.
 
-Pelissä tulee olemaan kolme vaihtoehtoa korttien määrälle. Tuloksista pidetään 
-kirjaa ja 5 parasta tulosta pääsee TOP 5 -listalle. Mitä nopeammin käyttäjä löytää 
-kaikki parit, sitä parempi tulos.
+Pelin aluksi kysytään käyttäjän nimi ja pelissä käytettävien korttien määrä. Kortteja valitaan 8-30 väliltä, ja käyttäjän on valittava parillinen määrä kortteja.
+
+Pelin lopuksi lasketaan kuinka paljon aikaa pelaaja on käyttänyt kaikkien parien löytämiseen. Jos tulos on riittävän hyvä, eli 10 parhaan tuloksen joukossa, lisätään pelaajan tiedot TOP10-listaan. Jokaisella vaihtoehdolla pelin kooksi on oma TOP10-listansa. Viimeiseksi näytetään vielä kyseisen pelin koon parhaat tulokset.
 
 Käyttäjät: Pelaajia
 

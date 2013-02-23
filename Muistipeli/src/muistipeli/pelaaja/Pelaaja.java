@@ -12,7 +12,6 @@ package muistipeli.pelaaja;
 public class Pelaaja {
 
     private String nimi;
-    private int sekuntit;
     private Tulos tulos;
     
     /**
@@ -22,7 +21,6 @@ public class Pelaaja {
      */
     public Pelaaja(String nimi) {
         this.nimi = nimi;
-        sekuntit = 0;
       
     }
     
@@ -33,7 +31,6 @@ public class Pelaaja {
      */
     
     public void lisaaSekuntit(int sekuntit) {
-        this.sekuntit = sekuntit;
         tulos = new Tulos(nimi, sekuntit);
     }
 

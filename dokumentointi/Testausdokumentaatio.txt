@@ -1,0 +1,9 @@
+Testausdokumentaatio
+
+Muistipelin testaaminen osallistui hiukan hankalaksi tekemŠni perustavanlaatuisen virheen takia, kun loin Peli-luokasta liian suuren ja annoin sille useamman vastuun. TŠten en pŠŠssyt kunnolla testaamaan Muistipelin ehdottomasti tŠrkeimpiŠ toiminnalisuuksia sisŠltŠvŠŠ luokkaa kunnolla. Muistipelin toimintalogiikan algoritmit on testattu lŠhinnŠ empiirisesti eli pelaamalla.
+
+Vaikka Peli-luokan testaaminen jŠikin harmillisen puutteelliseksi, muiden luokkien testaaminen onnistui kuitenkin varsin hyvin. TŠten testausfilosofiakseni tŠssŠ projektissa tuli ehkŠ jokseenkin optimistis-holistinen lŠhestymistapa: kokonaisuus on enemmŠn kuin osiensa summa. NimittŠin pelin moduulien testaus on mielestŠni tarpeeksi kattavaa ja onnistuin pitŠmŠŠn luokat pŠŠosin varsin yksinkertaisina. TŠten virheiden riski on jo testaamisen alussa on pieni. Sanottakoon, ettŠ minun oli vŠlillŠ vaikea keksiŠ tapoja testata koodiani juuri sen yksinkertaisuuden vuoksi.
+
+Koska testauksen voidaan sanoa jossain mŠŠrin olevan subjektiivista, voinen todeta ohjelmani tŠyttŠvŠn pŠŠosin sille vaaditun testauksen kattavuuden. 
+
+Ohjelmani ei valitettavasti kovasta yrityksestŠ huolimatta kykene kŠynnistŠmŠŠn itseŠŠn uudestaan eikŠ oikeastaan sulkeutumaankaan. En laskisi nŠitŠ bugeiksi, vaan puhtaiksi koodin puuteiksi. Kun ei taidot riitŠ, niin ei riitŠ.
